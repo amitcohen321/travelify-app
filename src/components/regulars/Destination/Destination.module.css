@@ -1,0 +1,13 @@
+.DestinationCont {
+	color: red;
+}
+
+input {
+	margin: 10px;
+}
+
+.deleteDestBtn {
+	display: inline;
+	color: red;
+	font-weight: bold;
+}

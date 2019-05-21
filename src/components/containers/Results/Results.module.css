@@ -1,0 +1,10 @@
+.ResultsCont {
+	background-color: lightblue;
+	padding: 20px;
+	margin: 0px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	text-align: center;
+}

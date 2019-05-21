@@ -1,0 +1,14 @@
+.Btn {
+	margin: 10px;
+	border-radius: 5px;
+}
+
+.BtnApprove {
+	color: white;
+	background-color: green;
+}
+
+.BtnDecline {
+	color: white;
+	background-color: red;
+}

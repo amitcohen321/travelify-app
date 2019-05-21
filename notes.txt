@@ -1,0 +1,5 @@
+work on login function flow
+
+before deploying:
+-make sure router route is setup (should be fine)
+-change node port to not be 4000

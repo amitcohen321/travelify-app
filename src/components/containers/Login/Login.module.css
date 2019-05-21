@@ -1,0 +1,14 @@
+body {
+	background-image: url("../../../assets/login-bg.jpg");
+	background-size: cover;
+}
+
+.FacebookLoginButtonCont {
+	/* position: relative; */
+	top: 20px;
+}
+
+.LoginCont {
+	position: relative;
+	top: 20px;
+}
