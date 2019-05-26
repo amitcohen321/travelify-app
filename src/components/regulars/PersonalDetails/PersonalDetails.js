@@ -18,10 +18,10 @@ const PersonalDetails = props => {
 			<div className={classes.EmailCont}>
 				<span>{props.userInfo.email}</span>
 			</div>
-
 			<div>
 				<label for='main_language'>Main spoken language</label>
 				<select
+					value={props.userInfo.language.mainLang}
 					id='main_language'
 					onChange={event => props.personalDetailsEditHandler("mainLang", event.target.value)}>
 					<option value=''>--Please choose an option--</option>
@@ -33,7 +33,7 @@ const PersonalDetails = props => {
 				</select>
 
 				<label for='speaks_english'>Speaks English?</label>
-				{props.userInfo.language.speaksEnglish ? (
+				{props.userInfo.language.speaksEnglish === "true" ? (
 					<input
 						type='checkbox'
 						id='speaks_english'
@@ -55,6 +55,7 @@ const PersonalDetails = props => {
 						cols='33'
 						onChange={event => props.personalDetailsEditHandler("about", event.target.value)}
 						placeholder='Tell us about you...'
+						value={props.userInfo.about}
 					/>
 				</div>
 			</div>

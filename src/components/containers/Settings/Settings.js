@@ -13,11 +13,9 @@ import * as actionCreators from "../../../store/actionCreators"
 class Settings extends Component {
 	state = {}
 
-	// updateUserToDatabase = () => {
-	// 	ServerLogic.updateUserToDatabase(store.getState()).then(res => {
-	// 		this.props.personalDetailsValueChanged("id", res)
-	// 	})
-	// }
+	updateUserToDatabase = () => {
+		ServerLogic.updateUserSettingsOnDb(store.getState())
+	}
 
 	render() {
 		return (

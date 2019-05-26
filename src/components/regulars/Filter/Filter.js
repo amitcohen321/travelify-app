@@ -6,7 +6,7 @@ const Filter = props => {
 		<div className={classes.FilterCont}>
 			<div>
 				<label htmlFor='gender'>Gender</label>
-				<select id='gender' onChange={event => props.handleFilterChange("gender", event.target.value)}>
+				<select value={props.filters.gender} id='gender' onChange={event => props.handleFilterChange("gender", event.target.value)}>
 					<option value='any'>Any</option>
 					<option value='male'>Male</option>
 					<option value='female'>Female</option>
@@ -15,7 +15,7 @@ const Filter = props => {
 
 			<div>
 				<label htmlFor='mainLang'>Main Language</label>
-				<select id='mainLang' onChange={event => props.handleFilterChange("mainLang", event.target.value)}>
+				<select id='mainLang' value={props.filters.mainLang} onChange={event => props.handleFilterChange("mainLang", event.target.value)}>
 					<option value='any'>Any</option>
 					<option value='english'>English</option>
 					<option value='french'>French</option>
@@ -24,20 +24,20 @@ const Filter = props => {
 					<option value='spanish'>Spanish</option>
 				</select>
 
-				<label htmlFor='speaks_english'>English speakers only?</label>
-				{props.englishOnly ? (
-					<input
-						type='checkbox'
-						id='speaks_english'
-						checked
-						onChange={event => props.handleFilterChange("englishOnly", event.target.checked)}
-					/>
-				) : (
-					<input
-						type='checkbox'
-						id='speaks_english'
-						onChange={event => props.handleFilterChange("englishOnly", event.target.checked)}
-					/>
+				{props.filters.mainLang === "english" ? null : (
+					<div>
+						<label htmlFor='speaks_english'>Speaks English?</label>
+						{props.filters.isEnglish ? (
+							<input
+								type='checkbox'
+								id='speaks_english'
+								checked
+								onChange={event => props.handleFilterChange("isEnglish", event.target.checked)}
+							/>
+						) : (
+							<input type='checkbox' id='speaks_english' onChange={event => props.handleFilterChange("isEnglish", event.target.checked)} />
+						)}
+					</div>
 				)}
 			</div>
 

@@ -35,24 +35,19 @@ class LocationSearchInput extends Component {
 
 	render() {
 		return (
-			<PlacesAutocomplete
-				value={this.state.address}
-				onChange={this.handleChange}
-				onSelect={this.handleSelect}>
+			<PlacesAutocomplete value={this.state.address} onChange={this.handleChange} onSelect={this.handleSelect}>
 				{({getInputProps, suggestions, getSuggestionItemProps, loading}) => (
 					<div className={classes.LocationInputCont}>
 						<input
 							{...getInputProps({
-								placeholder: "Location...",
+								placeholder: this.props.locationName,
 								className: "location-search-input"
 							})}
 						/>
 						<div className='autocomplete-dropdown-container'>
 							{loading && <div>Loading...</div>}
 							{suggestions.map(suggestion => {
-								const className = suggestion.active
-									? "suggestion-item--active"
-									: "suggestion-item"
+								const className = suggestion.active ? "suggestion-item--active" : "suggestion-item"
 								// inline style for demonstration purpose
 								const style = suggestion.active
 									? {backgroundColor: "#fafafa", cursor: "pointer"}

@@ -16,8 +16,8 @@ class Login extends Component {
 					console.log("user doesnt exist")
 					this.props.populateStore(FBresponse)
 					ServerLogic.createUser(store.getState())
-						.then(res => {
-							this.props.addUserId(res.data)
+						.then(newUserId => {
+							this.props.addUserId(newUserId.data)
 						})
 						.catch(err => {
 							console.log(err)
@@ -38,7 +38,7 @@ class Login extends Component {
 				<div className={classes.FacebookLoginButtonCont}>
 					<FacebookLogin
 						appId='320090962007782'
-						autoLoad={true}
+						// autoLoad={true}
 						scope='user_gender,user_age_range,user_location,user_link,user_birthday'
 						fields='name,email,picture,age_range,gender,location,link,birthday'
 						callback={this.responseFacebook}

@@ -2,24 +2,23 @@ import classes from "./Itinerary.module.css"
 import Destination from "../../regulars/Destination/Destination"
 import React, {Component} from "react"
 import Button from "../../UI/Button/Button"
-import {store} from "../../../App"
 import * as ServerLogic from "../../Utils/ServerLogic/ServerLogic"
 
 // REDUX
 import {connect} from "react-redux"
+import {store} from "../../../App"
 import * as actionCreators from "../../../store/actionCreators"
 
 class Itinerary extends Component {
 	state = {}
 
 	componentDidMount() {
-		this.props.onItineraryInit()
+		// this.props.onItineraryInit()
 	}
 
 	updateUserToDatabase() {
 		console.log("hi amit")
-		// ServerLogic.updateUserToDatabase(store.getState())
-		// ServerLogic.updateUserToDatabase(store.getState().destinations)
+		ServerLogic.updateUserItineraryOnDb(store.getState())
 	}
 
 	render() {

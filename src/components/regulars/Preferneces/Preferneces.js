@@ -21,7 +21,6 @@ const Preferneces = props => {
 			<div>
 				<label for='input_discoverable'>Discoverable?</label>
 
-				{/* must render either check checkbox of unchecked because of 'checked' attribute */}
 				{/* TODO: consider trying to have it without conditionaly render the input but rather only 1 */}
 				{props.preferneces.discoverable ? (
 					<input

@@ -119,22 +119,31 @@ const reducer = (state = initialState, action) => {
 		case actionTypes.POPULATE_STORE:
 			const editedUserInfo = {...state.userInfo}
 			const editedLoginInfo = {...state.loginInfo}
+			const editedLanguage = {...state.userInfo.language}
+			const editedPreferneces_ps = {...state.preferneces}
+			let editedDestinations = [...state.destinations]
 
 			editedUserInfo["name"] = action.loginData.name
 			editedUserInfo["email"] = action.loginData.email
 			editedUserInfo["gender"] = action.loginData.gender
 			editedUserInfo["fbProfileLink"] = action.loginData.link
+			editedUserInfo["about"] = action.loginData.about
 
 			if (!action.loginData.picture) {
-				console.log("populating store from DB data")
+				console.log("populating store from DB (existing user)")
 				editedUserInfo["id"] = action.loginData._id
 				editedUserInfo["age"] = action.loginData.age
 				editedUserInfo["imageUrl"] = action.loginData.imageUrl
 				editedUserInfo["residence"] = action.loginData.residence
 				editedLoginInfo["token"] = action.loginData.loginInfo.token
 				editedLoginInfo["fbUserId"] = action.loginData.loginInfo.fbUserId
+				editedLanguage["mainLang"] = action.loginData.language.mainLang
+				editedLanguage["speaksEnglish"] = action.loginData.language.speaksEnglish
+				editedPreferneces_ps["discoverable"] = action.loginData.preferneces.discoverable
+				editedPreferneces_ps["radius"] = action.loginData.preferneces.radius
+				editedDestinations = [...action.loginData.itinerary.destinations]
 			} else {
-				console.log("populating store from FB data")
+				console.log("populating store from FB data (new user)")
 				const age = utils.getAge(action.loginData.birthday)
 				editedUserInfo["age"] = age
 				editedUserInfo["imageUrl"] = action.loginData.picture.data.url
@@ -145,10 +154,14 @@ const reducer = (state = initialState, action) => {
 
 			editedLoginInfo["isLoggedIn"] = true
 
+			editedUserInfo["language"] = {...editedLanguage}
+
 			return {
 				...state,
 				userInfo: {...editedUserInfo},
-				loginInfo: {...editedLoginInfo}
+				loginInfo: {...editedLoginInfo},
+				preferneces: {...editedPreferneces_ps},
+				destinations: [...editedDestinations]
 			}
 
 		default:

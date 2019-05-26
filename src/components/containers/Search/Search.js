@@ -3,67 +3,81 @@ import Filter from "../../regulars/Filter/Filter"
 import Results from "../Results/Results"
 import Backdrop from "../../UI/Backdrop/Backdrop"
 import ProfileScreen from "../../regulars/ProfileScreen/ProfileScreen"
+import * as ServerLogic from "../../Utils/ServerLogic/ServerLogic"
+import "./Search.css"
+import * as _ from "lodash"
 
 // REDUX
 import {connect} from "react-redux"
-import * as actionCreators from "../../../store/actionCreators"
+import {store} from "../../../App"
 
 class Search extends Component {
 	state = {
+		loading: false,
 		showProfileScreen: null,
 		filters: {
 			gender: "any",
 			mainLang: "any",
-			englishOnly: false,
+			isEnglish: true,
 			ageFrom: "18",
 			ageTo: "65"
 		},
-		results: [
-			{
-				id: Math.floor(Math.random() * 1000),
-				name: "Amit Cohen",
-				age: "29",
-				country: "Israel",
-				imageUrl:
-					"https://scontent.fsdv1-2.fna.fbcdn.net/v/t1.0-9/41660018_10212502444265968_5948577464996331520_n.jpg?_nc_cat=104&_nc_ht=scontent.fsdv1-2.fna&oh=1b2acf4a5e0447aeb906a3e69c35c181&oe=5D5D3691",
-				about: "Lorem  laboris nisi ut aliquip ex ea commodo consequat. D laborum"
-			},
-			{
-				id: Math.floor(Math.random() * 1000),
-				name: "Ronen Shalom",
-				age: "29",
-				country: "Israel",
-				imageUrl:
-					"https://scontent.fsdv1-2.fna.fbcdn.net/v/t1.0-9/41660018_10212502444265968_5948577464996331520_n.jpg?_nc_cat=104&_nc_ht=scontent.fsdv1-2.fna&oh=1b2acf4a5e0447aeb906a3e69c35c181&oe=5D5D3691",
-				about: "Lorem  laboris nisi ut aliquip ex ea commodo consequat. D laborum"
-			},
-			{
-				id: Math.floor(Math.random() * 1000),
-				name: "Amos Levi",
-				age: "29",
-				country: "Israel",
-				imageUrl:
-					"https://scontent.fsdv1-2.fna.fbcdn.net/v/t1.0-9/41660018_10212502444265968_5948577464996331520_n.jpg?_nc_cat=104&_nc_ht=scontent.fsdv1-2.fna&oh=1b2acf4a5e0447aeb906a3e69c35c181&oe=5D5D3691",
-				about: "Lorem  laboris nisi ut aliquip ex ea commodo consequat. D laborum"
-			}
-		]
+		resultsFromDB: [],
+		filteredResults: []
 	}
 
-	//on initial render of component (componentdidmount) fetch all users that match destinations (this.props.destinations)
-	//on handleFilterChange, setState with the users that go through the filtering
-
 	componentDidMount() {
-		//fetch all users from db that match the current user's itinerary
+		this.setState({loading: true})
+		const resultsFromDB = []
+		ServerLogic.searchBuddies(store.getState().userInfo.id)
+			.then(response => {
+				response.data.forEach(user => {
+					resultsFromDB.push({
+						id: user._id,
+						name: user.name,
+						gender: user.gender,
+						age: user.age,
+						country: user.residence,
+						imageUrl: user.imageUrl,
+						about: user.about,
+						language: {...user.language}
+					})
+				})
+				// TODO: make sure duplicated dont return from db instead of using lodash uniqBy
+				this.setState({resultsFromDB: [..._.uniqBy(resultsFromDB, "id")]})
+				this.applyFilters()
+			})
+			.catch(err => console.log(err))
 	}
 
 	handleFilterChange = (filter, newValue) => {
 		const newFiltersObj = {...this.state.filters}
+		// todo: fix bug here that when you mark as NOT the nchange to english then back to other language it marks as YES
+		if (filter === "mainLang" && newValue === "english") {
+			newFiltersObj["isEnglish"] = true
+		}
 		newFiltersObj[filter] = newValue
-		this.setState({filters: newFiltersObj})
+		this.setState({filters: {...newFiltersObj}}, function() {
+			this.applyFilters()
+		})
 	}
 
 	applyFilters = () => {
-		// initiate on every UI change on filter
+		console.log(this.state.filters)
+		const filteredResults = this.state.resultsFromDB.filter(result => {
+			console.log(result.language.speaksEnglish)
+			console.log(this.state.filters.isEnglish)
+			if (
+				(result.gender === this.state.filters.gender || this.state.filters.gender === "any") &&
+				+result.age > +this.state.filters.ageFrom &&
+				+result.age < +this.state.filters.ageTo &&
+				(result.language.mainLang === this.state.filters.mainLang || this.state.filters.gender === "any") &&
+				!result.language.speaksEnglish === !this.state.filters.isEnglish
+			) {
+				return true
+			}
+		})
+		this.setState({filteredResults: [...filteredResults], loading: false})
 	}
 
 	setProfileScreenToShow = userId => {
@@ -84,7 +98,14 @@ class Search extends Component {
 					</>
 				)}
 				<Filter filters={this.state.filters} handleFilterChange={this.handleFilterChange} />
-				<Results results={this.state.results} moreInfoClickHandler={this.setProfileScreenToShow} />
+				{this.state.loading ? (
+					<div class='lds-ripple'>
+						<div />
+						<div />
+					</div>
+				) : (
+					<Results resultsToShow={this.state.filteredResults} moreInfoClickHandler={this.setProfileScreenToShow} />
+				)}
 			</>
 		)
 	}

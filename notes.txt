@@ -1,4 +1,5 @@
-work on login function flow
+Finish the filter component
+
 
 before deploying:
 -make sure router route is setup (should be fine)
