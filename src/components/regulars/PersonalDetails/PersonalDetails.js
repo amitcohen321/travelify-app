@@ -2,12 +2,13 @@ import React from "react"
 import classes from "./PersonalDetails.module.css"
 
 const PersonalDetails = props => {
+	console.log(props)
 	return (
 		<div className={classes.PersonalDetailsCont}>
 			<h2> Personal Details </h2>
 			<h3>{props.userInfo.name}</h3>
 			<div className={classes.ImageCont}>
-				<img src={props.userInfo.imageUrl} />
+				<img src={props.userInfo.imageUrl} alt='user-avatar' />
 			</div>
 			<br />
 			<div>
@@ -19,7 +20,7 @@ const PersonalDetails = props => {
 				<span>{props.userInfo.email}</span>
 			</div>
 			<div>
-				<label for='main_language'>Main spoken language</label>
+				<label htmlFor='main_language'>Main spoken language</label>
 				<select
 					value={props.userInfo.language.mainLang}
 					id='main_language'
@@ -32,7 +33,7 @@ const PersonalDetails = props => {
 					<option value='spanish'>Spanish</option>
 				</select>
 
-				<label for='speaks_english'>Speaks English?</label>
+				<label htmlFor='speaks_english'>Speaks English?</label>
 				{props.userInfo.language.speaksEnglish === "true" ? (
 					<input
 						type='checkbox'

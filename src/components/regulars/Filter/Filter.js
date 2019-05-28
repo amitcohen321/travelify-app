@@ -26,7 +26,7 @@ const Filter = props => {
 
 				{props.filters.mainLang === "english" ? null : (
 					<div>
-						<label htmlFor='speaks_english'>Speaks English?</label>
+						<label htmlFor='speaks_english'>Have to speak English?</label>
 						{props.filters.isEnglish ? (
 							<input
 								type='checkbox'

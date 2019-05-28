@@ -40,7 +40,8 @@ class Search extends Component {
 						country: user.residence,
 						imageUrl: user.imageUrl,
 						about: user.about,
-						language: {...user.language}
+						language: {...user.language},
+						fbProfileLink: user.fbProfileLink
 					})
 				})
 				// TODO: make sure duplicated dont return from db instead of using lodash uniqBy
@@ -52,7 +53,7 @@ class Search extends Component {
 
 	handleFilterChange = (filter, newValue) => {
 		const newFiltersObj = {...this.state.filters}
-		// todo: fix bug here that when you mark as NOT the nchange to english then back to other language it marks as YES
+		// todo: fix bug here that when you mark as NOT then change to english then back to other language it marks as YES
 		if (filter === "mainLang" && newValue === "english") {
 			newFiltersObj["isEnglish"] = true
 		}
@@ -63,25 +64,30 @@ class Search extends Component {
 	}
 
 	applyFilters = () => {
-		console.log(this.state.filters)
+		console.log(this.state.resultsFromDB)
+		// todo: Have the isEnglish thing a boolean all the time
+
 		const filteredResults = this.state.resultsFromDB.filter(result => {
-			console.log(result.language.speaksEnglish)
 			console.log(this.state.filters.isEnglish)
+			console.log(result.language.speaksEnglish)
+			console.log((this.state.filters.isEnglish && result.language.speaksEnglish) || !this.state.filters.isEnglish)
+			const asBool = result.language.speaksEnglish === "true" // conver str bool to actual bool
 			if (
 				(result.gender === this.state.filters.gender || this.state.filters.gender === "any") &&
 				+result.age > +this.state.filters.ageFrom &&
 				+result.age < +this.state.filters.ageTo &&
-				(result.language.mainLang === this.state.filters.mainLang || this.state.filters.gender === "any") &&
-				!result.language.speaksEnglish === !this.state.filters.isEnglish
+				(result.language.mainLang === this.state.filters.mainLang || this.state.filters.mainLang === "any") &&
+				((this.state.filters.isEnglish && asBool) || !this.state.filters.isEnglish)
 			) {
 				return true
 			}
 		})
+		console.log(filteredResults)
 		this.setState({filteredResults: [...filteredResults], loading: false})
 	}
 
 	setProfileScreenToShow = userId => {
-		const userToShowHisScreen = this.state.results.filter(user => user.id === userId)
+		const userToShowHisScreen = this.state.resultsFromDB.filter(user => user.id === userId)
 		this.setState({showProfileScreen: userToShowHisScreen})
 	}
 	closeProfileScreen = () => {
@@ -93,13 +99,13 @@ class Search extends Component {
 			<>
 				{this.state.showProfileScreen === null ? null : (
 					<>
-						<ProfileScreen userObj={this.state.showProfileScreen[0]} />
+						<ProfileScreen clockHandler={this.closeProfileScreen} userObj={this.state.showProfileScreen[0]} />
 						<Backdrop show='true' clicked={this.closeProfileScreen} />
 					</>
 				)}
 				<Filter filters={this.state.filters} handleFilterChange={this.handleFilterChange} />
 				{this.state.loading ? (
-					<div class='lds-ripple'>
+					<div className='lds-ripple'>
 						<div />
 						<div />
 					</div>

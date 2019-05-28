@@ -6,7 +6,9 @@ const Preferneces = props => {
 		<div className={classes.PrefernecesContainer}>
 			<h2>Preferneces</h2>
 			<div>
-				<label for='input_radius'>Radius</label>
+				<label htmlFor='input_radius'>
+					Radius <sub>(for Real-Time only)</sub>
+				</label>
 				<input
 					type='range'
 					id='input_radius'
@@ -19,7 +21,7 @@ const Preferneces = props => {
 			</div>
 
 			<div>
-				<label for='input_discoverable'>Discoverable?</label>
+				<label htmlFor='input_discoverable'>Discoverable?</label>
 
 				{/* TODO: consider trying to have it without conditionaly render the input but rather only 1 */}
 				{props.preferneces.discoverable ? (

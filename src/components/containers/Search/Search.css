@@ -1,6 +1,7 @@
 .lds-ripple {
 	display: inline-block;
 	position: relative;
+	top: 35px;
 	width: 64px;
 	height: 64px;
 }

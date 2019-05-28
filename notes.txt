@@ -1,5 +1,4 @@
-Finish the filter component
-
+do all todos
 
 before deploying:
 -make sure router route is setup (should be fine)

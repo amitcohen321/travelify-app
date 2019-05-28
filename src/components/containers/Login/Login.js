@@ -10,8 +10,12 @@ import * as actionCreators from "../../../store/actionCreators"
 
 class Login extends Component {
 	responseFacebook = FBresponse => {
+		const imgUrl = `https://graph.facebook.com/${FBresponse.userID}/picture?type=large`
+		FBresponse["picture"]["data"]["url"] = imgUrl
+
 		ServerLogic.getUserByFbUserId(FBresponse.userID)
 			.then(res => {
+				console.log(res)
 				if (res.data.length === 0) {
 					console.log("user doesnt exist")
 					this.props.populateStore(FBresponse)
@@ -47,7 +51,11 @@ class Login extends Component {
 					/>
 				</div>
 				<span>
-					(There's no other way to login <span>🙂</span>)
+					(There's no other way to login{" "}
+					<span role='img' aria-label='smile-emoji'>
+						🙂
+					</span>
+					)
 				</span>
 			</div>
 		)

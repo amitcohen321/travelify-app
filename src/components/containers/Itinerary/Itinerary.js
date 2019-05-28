@@ -10,15 +10,18 @@ import {store} from "../../../App"
 import * as actionCreators from "../../../store/actionCreators"
 
 class Itinerary extends Component {
-	state = {}
+	state = {
+		isItineraryUpdated: false
+	}
 
 	componentDidMount() {
 		// this.props.onItineraryInit()
 	}
 
-	updateUserToDatabase() {
-		console.log("hi amit")
+	updateUserToDatabase = () => {
 		ServerLogic.updateUserItineraryOnDb(store.getState())
+			.then(res => this.setState({isItineraryUpdated: true}))
+			.catch(err => console.log(err))
 	}
 
 	render() {
@@ -47,6 +50,7 @@ class Itinerary extends Component {
 				<Button type='apply' btnAction={this.updateUserToDatabase}>
 					Apply
 				</Button>
+				{this.state.isItineraryUpdated ? <span role='checkmark'>Saved! ✅</span> : null}
 			</div>
 		)
 	}

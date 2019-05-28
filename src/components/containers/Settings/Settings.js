@@ -11,26 +11,25 @@ import {connect} from "react-redux"
 import * as actionCreators from "../../../store/actionCreators"
 
 class Settings extends Component {
-	state = {}
+	state = {
+		isUserUpdated: false
+	}
 
 	updateUserToDatabase = () => {
 		ServerLogic.updateUserSettingsOnDb(store.getState())
+			.then(res => this.setState({isUserUpdated: true}))
+			.catch(err => console.log(err))
 	}
 
 	render() {
 		return (
 			<div className={classes.SettingsCont}>
-				<PersonalDetails
-					personalDetailsEditHandler={this.props.personalDetailsValueChanged}
-					userInfo={this.props.userInfo}
-				/>
-				<Preferneces
-					prefernecesEditHandler={this.props.prefernecesValueChanged}
-					preferneces={this.props.preferneces}
-				/>
+				<PersonalDetails personalDetailsEditHandler={this.props.personalDetailsValueChanged} userInfo={this.props.userInfo} />
+				<Preferneces prefernecesEditHandler={this.props.prefernecesValueChanged} preferneces={this.props.preferneces} />
 				<Button type='apply' btnAction={this.updateUserToDatabase}>
 					Apply
 				</Button>
+				{this.state.isUserUpdated ? <span role='checkmark-emoji'> Saved! ✅</span> : null}
 			</div>
 		)
 	}

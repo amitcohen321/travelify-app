@@ -21,17 +21,11 @@ export const getUserItinerary = userId => {
 }
 
 export const updateUserSettingsOnDb = user => {
-	axios
-		.post("http://localhost:4000/update-user-settings", user)
-		.then(res => console.log(res))
-		.catch(err => console.log(err))
+	return axios.post("http://localhost:4000/update-user-settings", user)
 }
 
 export const updateUserItineraryOnDb = state => {
-	axios
-		.post("http://localhost:4000/update-user-itinerary", state)
-		.then(res => console.log(res))
-		.catch(err => console.log(err))
+	return axios.post("http://localhost:4000/update-user-itinerary", state)
 }
 
 export const searchBuddies = userId => {
