@@ -1,5 +1,65 @@
-do all todos
+work on this function setSendMesssageScreenToShow
+fix every time that changing to english marks speaksEnglish then changing back doens't mark back - 2 places (reducer line 108)
+style the Filter component
+fix Utils folder structure
 
 before deploying:
 -make sure router route is setup (should be fine)
 -change node port to not be 4000
+
+
+import React, {Component} from "react"
+import classes from "./MessaegForm.module.css"
+
+class MessageForm extends Component {
+	state = {
+		formFields: [
+			{
+				name: "message",
+				config: {
+					type: "textarea",
+					placeholder: "Your Message...",
+					rows: "50",
+					cols: "50"
+				},
+				value: "",
+				validation: {
+					required: true
+				},
+				valid: false,
+				touched: false
+			}
+		]
+	}
+
+	render() {
+		return (
+			<div className={classes.FromCont}>
+				<p> From: {this.props.sender.name} </p>
+				<p> To: {this.props.recipient.name}</p>
+				<form className={classes.Form}>
+					{this.state.formFields.map(field => {
+						return (
+							<input
+								// key={field.name}
+								type='textarea'
+								placeholder='Your message...'
+								rows='50'
+								cols='50'
+								// value={field.value}
+								// checkValidity={this.checkValidity}
+								// touchHandler={this.touchHandler}
+							/>
+						)
+					})}
+					<br />
+					<input type='submit' value='Send' submitHandler={this.submitHandler} />
+				</form>
+				<span>*The receipent will also receive a link to your public Facebook profile</span>
+			</div>
+		)
+	}
+}
+
+export default MessageForm
+

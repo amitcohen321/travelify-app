@@ -4,7 +4,14 @@ import ResultThumbnail from "../../regulars/ResultThumbnail/ResultThumbnail"
 
 const Results = props => {
 	const resultsThumbnails = props.resultsToShow.map(result => {
-		return <ResultThumbnail key={result.id} result={result} moreInfoClickHandler={props.moreInfoClickHandler} />
+		return (
+			<ResultThumbnail
+				key={result.id}
+				result={result}
+				moreInfoClickHandler={props.moreInfoClickHandler}
+				sendMessageClickHandler={props.sendMessageClickHandler}
+			/>
+		)
 	})
 
 	return (

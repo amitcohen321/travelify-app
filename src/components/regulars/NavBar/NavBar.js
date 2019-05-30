@@ -17,7 +17,9 @@ const NavBar = props => {
 					<NavLink to='/itinerary'>Itinerary</NavLink>
 				</li>
 				<li>
-					<NavLink to='/realtime'>Real-Time</NavLink>
+					<NavLink to='/realtime'>
+						Real-Time<span> (soon)</span>
+					</NavLink>
 				</li>
 				<li>
 					<NavLink to='/settings'>Settings</NavLink>

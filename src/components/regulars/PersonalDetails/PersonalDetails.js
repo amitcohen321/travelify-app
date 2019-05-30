@@ -3,6 +3,31 @@ import classes from "./PersonalDetails.module.css"
 
 const PersonalDetails = props => {
 	console.log(props)
+	let englishInput = null
+
+	props.userInfo.language.speaksEnglish === "true"
+		? (englishInput = (
+				<>
+					<label htmlFor='speaks_english'>Speaks English?</label>
+					<input
+						type='checkbox'
+						id='speaks_english'
+						checked
+						onChange={event => props.personalDetailsEditHandler("speaksEnglish", event.target.checked)}
+					/>
+				</>
+		  ))
+		: (englishInput = (
+				<>
+					<label for='speaks_english'>Speaks English?</label>
+					<input
+						type='checkbox'
+						id='speaks_english'
+						onChange={event => props.personalDetailsEditHandler("speaksEnglish", event.target.checked)}
+					/>
+				</>
+		  ))
+
 	return (
 		<div className={classes.PersonalDetailsCont}>
 			<h2> Personal Details </h2>
@@ -13,7 +38,7 @@ const PersonalDetails = props => {
 			<br />
 			<div>
 				<span>age: {props.userInfo.age}, </span>
-				<span>from {props.userInfo.country}</span>
+				<span>from {props.userInfo.residence}</span>
 			</div>
 
 			<div className={classes.EmailCont}>
@@ -25,7 +50,7 @@ const PersonalDetails = props => {
 					value={props.userInfo.language.mainLang}
 					id='main_language'
 					onChange={event => props.personalDetailsEditHandler("mainLang", event.target.value)}>
-					<option value=''>--Please choose an option--</option>
+					<option value=''>Choose...</option>
 					<option value='english'>English</option>
 					<option value='french'>French</option>
 					<option value='german'>German</option>
@@ -33,21 +58,8 @@ const PersonalDetails = props => {
 					<option value='spanish'>Spanish</option>
 				</select>
 
-				<label htmlFor='speaks_english'>Speaks English?</label>
-				{props.userInfo.language.speaksEnglish === "true" ? (
-					<input
-						type='checkbox'
-						id='speaks_english'
-						checked
-						onChange={event => props.personalDetailsEditHandler("speaksEnglish", event.target.checked)}
-					/>
-				) : (
-					<input
-						type='checkbox'
-						id='speaks_english'
-						onChange={event => props.personalDetailsEditHandler("speaksEnglish", event.target.checked)}
-					/>
-				)}
+				{props.userInfo.language.mainLang === "english" ? null : englishInput}
+
 				<div>
 					<textarea
 						id='about'

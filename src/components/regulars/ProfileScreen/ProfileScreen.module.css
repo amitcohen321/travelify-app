@@ -1,18 +1,3 @@
-.ProfileScreen {
-	background-color: #95eaf3;
-	position: absolute;
-	padding: 20px;
-	z-index: 200;
-	width: 70%;
-	height: auto;
-	top: 30px;
-	left: 100px;
-	text-align: -webkit-center;
-	font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-	border-radius: 10px;
-	overflow: auto;
-}
-
 .Avatar {
 	width: 35%;
 }
@@ -20,11 +5,4 @@
 .Avatar img {
 	width: 100%;
 	border-radius: 75px;
-}
-
-.xIcon {
-	position: absolute;
-	left: 5%;
-	top: 5%;
-	cursor: pointer;
 }

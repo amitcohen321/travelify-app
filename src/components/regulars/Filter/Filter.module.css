@@ -7,3 +7,9 @@
 .AgeFromIndicator {
 	width: 20px;
 }
+
+.FilterCont {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}

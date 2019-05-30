@@ -6,6 +6,9 @@ import ProfileScreen from "../../regulars/ProfileScreen/ProfileScreen"
 import * as ServerLogic from "../../Utils/ServerLogic/ServerLogic"
 import "./Search.css"
 import * as _ from "lodash"
+import WithModal from "../../UI/WithModal/WithModal"
+import Loader from "../../UI/Loader/Loader"
+import MessageForm from "../../regulars/MessageForm/MessageForm"
 
 // REDUX
 import {connect} from "react-redux"
@@ -15,6 +18,7 @@ class Search extends Component {
 	state = {
 		loading: false,
 		showProfileScreen: null,
+		showMessageScreen: null,
 		filters: {
 			gender: "any",
 			mainLang: "any",
@@ -35,6 +39,7 @@ class Search extends Component {
 					resultsFromDB.push({
 						id: user._id,
 						name: user.name,
+						email: user.email,
 						gender: user.gender,
 						age: user.age,
 						country: user.residence,
@@ -64,25 +69,20 @@ class Search extends Component {
 	}
 
 	applyFilters = () => {
-		console.log(this.state.resultsFromDB)
 		// todo: Have the isEnglish thing a boolean all the time
-
 		const filteredResults = this.state.resultsFromDB.filter(result => {
-			console.log(this.state.filters.isEnglish)
-			console.log(result.language.speaksEnglish)
-			console.log((this.state.filters.isEnglish && result.language.speaksEnglish) || !this.state.filters.isEnglish)
 			const asBool = result.language.speaksEnglish === "true" // conver str bool to actual bool
 			if (
 				(result.gender === this.state.filters.gender || this.state.filters.gender === "any") &&
 				+result.age > +this.state.filters.ageFrom &&
 				+result.age < +this.state.filters.ageTo &&
-				(result.language.mainLang === this.state.filters.mainLang || this.state.filters.mainLang === "any") &&
+				(result.language.mainLang === this.state.filters.mainLang ||
+					this.state.filters.mainLang === "any") &&
 				((this.state.filters.isEnglish && asBool) || !this.state.filters.isEnglish)
 			) {
 				return true
 			}
 		})
-		console.log(filteredResults)
 		this.setState({filteredResults: [...filteredResults], loading: false})
 	}
 
@@ -90,27 +90,52 @@ class Search extends Component {
 		const userToShowHisScreen = this.state.resultsFromDB.filter(user => user.id === userId)
 		this.setState({showProfileScreen: userToShowHisScreen})
 	}
+
 	closeProfileScreen = () => {
 		this.setState({showProfileScreen: null})
+	}
+
+	setSendMesssageScreenToShow = userId => {
+		const userToSendMessageTo = this.state.resultsFromDB.filter(user => user.id === userId)
+		this.setState({showMessageScreen: userToSendMessageTo})
+	}
+
+	closeMessageScreen = () => {
+		this.setState({showMessageScreen: null})
 	}
 
 	render() {
 		return (
 			<>
+				{this.state.showMessageScreen === null ? null : (
+					<>
+						<WithModal closeHandler={this.closeMessageScreen}>
+							<MessageForm
+								sender={this.props.currentUser}
+								recipient={this.state.showMessageScreen[0]}
+							/>
+						</WithModal>
+						<Backdrop show='true' clicked={this.closeProfileScreen} />
+					</>
+				)}
+
 				{this.state.showProfileScreen === null ? null : (
 					<>
-						<ProfileScreen clockHandler={this.closeProfileScreen} userObj={this.state.showProfileScreen[0]} />
+						<WithModal closeHandler={this.closeProfileScreen}>
+							<ProfileScreen userObj={this.state.showProfileScreen[0]} />
+						</WithModal>
 						<Backdrop show='true' clicked={this.closeProfileScreen} />
 					</>
 				)}
 				<Filter filters={this.state.filters} handleFilterChange={this.handleFilterChange} />
 				{this.state.loading ? (
-					<div className='lds-ripple'>
-						<div />
-						<div />
-					</div>
+					<Loader />
 				) : (
-					<Results resultsToShow={this.state.filteredResults} moreInfoClickHandler={this.setProfileScreenToShow} />
+					<Results
+						resultsToShow={this.state.filteredResults}
+						moreInfoClickHandler={this.setProfileScreenToShow}
+						sendMessageClickHandler={this.setSendMesssageScreenToShow}
+					/>
 				)}
 			</>
 		)
@@ -119,7 +144,8 @@ class Search extends Component {
 
 const mapStateToProps = state => {
 	return {
-		destinations: state.destinations
+		destinations: state.destinations,
+		currentUser: state.userInfo
 	}
 }
 

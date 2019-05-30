@@ -2,10 +2,6 @@ import * as actionTypes from "./actionTypes"
 import * as utils from "../utils"
 
 const initialState = {
-	appState: {
-		loading: false,
-		error: false
-	},
 	loginInfo: {
 		isLoggedIn: false,
 		token: "",
@@ -104,7 +100,13 @@ const reducer = (state = initialState, action) => {
 			const editedUserLanguage = {...state.userInfo.language}
 			editedUserLanguage[action.personalDetailsField] = action.newValue
 			const newUserInfo = {...state.userInfo}
-			if (action.personalDetailsField === "mainLang" || action.personalDetailsField === "speaksEnglish") {
+			if (
+				action.personalDetailsField === "mainLang" ||
+				action.personalDetailsField === "speaksEnglish"
+			) {
+				if (action.personalDetailsField === "mainLang" && action.newValue === "english") {
+					editedUserLanguage["speaksEnglish"] = "true"
+				}
 				newUserInfo["language"] = editedUserLanguage
 			} else if (action.personalDetailsField === "about") {
 				newUserInfo["about"] = action.newValue
@@ -117,6 +119,7 @@ const reducer = (state = initialState, action) => {
 			}
 
 		case actionTypes.POPULATE_STORE:
+			console.log(action.loginData)
 			const editedUserInfo = {...state.userInfo}
 			const editedLoginInfo = {...state.loginInfo}
 			const editedLanguage = {...state.userInfo.language}
@@ -126,7 +129,7 @@ const reducer = (state = initialState, action) => {
 			editedUserInfo["name"] = action.loginData.name
 			editedUserInfo["email"] = action.loginData.email
 			editedUserInfo["gender"] = action.loginData.gender
-			editedUserInfo["fbProfileLink"] = action.loginData.link
+			editedUserInfo["fbProfileLink"] = action.loginData.fbProfileLink
 			editedUserInfo["about"] = action.loginData.about
 
 			if (!action.loginData.picture) {
@@ -155,6 +158,7 @@ const reducer = (state = initialState, action) => {
 			editedLoginInfo["isLoggedIn"] = true
 
 			editedUserInfo["language"] = {...editedLanguage}
+			console.log(editedUserInfo)
 
 			return {
 				...state,

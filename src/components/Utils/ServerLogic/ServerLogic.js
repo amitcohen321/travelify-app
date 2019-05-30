@@ -31,3 +31,8 @@ export const updateUserItineraryOnDb = state => {
 export const searchBuddies = userId => {
 	return axios.get("http://localhost:4000/search-buddies/" + userId)
 }
+
+export const sendEmail = mailInfo => {
+	console.log(mailInfo)
+	return axios.post("http://localhost:4000/send-email/", mailInfo)
+}

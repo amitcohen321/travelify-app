@@ -17,7 +17,9 @@ const Result = props => {
 					<a href={props.result.fbProfileLink} target='_blank'>
 						FB Profile
 					</a>
-					<button type='button'>Message...</button>
+					<button type='button' onClick={() => props.sendMessageClickHandler(props.result.id)}>
+						Message...
+					</button>
 					<button type='button' onClick={() => props.moreInfoClickHandler(props.result.id)}>
 						More Info
 					</button>

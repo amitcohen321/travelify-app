@@ -1,13 +1,10 @@
 import React from "react"
 import classes from "./ProfileScreen.module.css"
+// import withModal from "../../UI/withModal/withModal"
 
 const ProfileScreen = props => {
-	console.log(props)
 	return (
-		<div className={classes.ProfileScreen}>
-			<span className={classes.xIcon} onClick={props.clockHandler}>
-				X
-			</span>
+		<div>
 			<h3>{props.userObj.name}</h3>
 			<div className={classes.Avatar}>
 				<img src={props.userObj.imageUrl} alt='user-avatar' />
