@@ -15,7 +15,6 @@ class Login extends Component {
 
 		ServerLogic.getUserByFbUserId(FBresponse.userID)
 			.then(res => {
-				console.log(res)
 				if (res.data.length === 0) {
 					console.log("user doesnt exist")
 					this.props.populateStore(FBresponse)

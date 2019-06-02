@@ -1,11 +1,10 @@
-work on this function setSendMesssageScreenToShow
 fix every time that changing to english marks speaksEnglish then changing back doens't mark back - 2 places (reducer line 108)
-style the Filter component
-fix Utils folder structure
+make sure dates logic works
 
 before deploying:
 -make sure router route is setup (should be fine)
 -change node port to not be 4000
+-change all server strings to server address
 
 
 import React, {Component} from "react"

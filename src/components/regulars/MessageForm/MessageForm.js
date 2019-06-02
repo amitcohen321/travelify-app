@@ -73,7 +73,7 @@ class MessageForm extends Component {
 					<input type='button' value='Send' onClick={this.sendEmail} />
 					{this.state.messageSent ? <span>Message Sent!</span> : null}
 				</form>
-				<span>*The receipent will also receive a link to your public Facebook profile</span>
+				<span>*The recipent will also receive a link to your public Facebook profile</span>
 			</div>
 		)
 	}

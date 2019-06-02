@@ -6,7 +6,10 @@ const Filter = props => {
 		<div className={classes.FilterCont}>
 			<div>
 				<label htmlFor='gender'>Gender</label>
-				<select value={props.filters.gender} id='gender' onChange={event => props.handleFilterChange("gender", event.target.value)}>
+				<select
+					value={props.filters.gender}
+					id='gender'
+					onChange={event => props.handleFilterChange("gender", event.target.value)}>
 					<option value='any'>Any</option>
 					<option value='male'>Male</option>
 					<option value='female'>Female</option>
@@ -15,7 +18,10 @@ const Filter = props => {
 
 			<div>
 				<label htmlFor='mainLang'>Main Language</label>
-				<select id='mainLang' value={props.filters.mainLang} onChange={event => props.handleFilterChange("mainLang", event.target.value)}>
+				<select
+					id='mainLang'
+					value={props.filters.mainLang}
+					onChange={event => props.handleFilterChange("mainLang", event.target.value)}>
 					<option value='any'>Any</option>
 					<option value='english'>English</option>
 					<option value='french'>French</option>
@@ -32,18 +38,28 @@ const Filter = props => {
 								type='checkbox'
 								id='speaks_english'
 								checked
-								onChange={event => props.handleFilterChange("isEnglish", event.target.checked)}
+								onChange={event =>
+									props.handleFilterChange("isEnglish", event.target.checked)
+								}
 							/>
 						) : (
-							<input type='checkbox' id='speaks_english' onChange={event => props.handleFilterChange("isEnglish", event.target.checked)} />
+							<input
+								type='checkbox'
+								id='speaks_english'
+								onChange={event =>
+									props.handleFilterChange("isEnglish", event.target.checked)
+								}
+							/>
 						)}
 					</div>
 				)}
 			</div>
 
 			<div>
-				<span htmlFor='age'>Age:</span>
-
+				<span htmlFor='age'>
+					<b>Age:</b>
+				</span>
+				<br />
 				<label htmlFor='ageFrom'>From</label>
 				<input
 					type='range'
@@ -54,7 +70,7 @@ const Filter = props => {
 					onChange={event => props.handleFilterChange("ageFrom", event.target.value)}
 				/>
 				<input className={classes.AgeFromIndicator} type='text' value={props.filters.ageFrom} />
-
+				<br />
 				<label htmlFor='ageTo'>To</label>
 				<input
 					type='range'

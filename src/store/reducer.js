@@ -1,5 +1,5 @@
 import * as actionTypes from "./actionTypes"
-import * as utils from "../utils"
+import * as utils from "../components/Utils/utils"
 
 const initialState = {
 	loginInfo: {
@@ -119,7 +119,6 @@ const reducer = (state = initialState, action) => {
 			}
 
 		case actionTypes.POPULATE_STORE:
-			console.log(action.loginData)
 			const editedUserInfo = {...state.userInfo}
 			const editedLoginInfo = {...state.loginInfo}
 			const editedLanguage = {...state.userInfo.language}
@@ -158,7 +157,6 @@ const reducer = (state = initialState, action) => {
 			editedLoginInfo["isLoggedIn"] = true
 
 			editedUserInfo["language"] = {...editedLanguage}
-			console.log(editedUserInfo)
 
 			return {
 				...state,

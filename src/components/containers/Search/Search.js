@@ -83,6 +83,7 @@ class Search extends Component {
 				return true
 			}
 		})
+		console.log(filteredResults)
 		this.setState({filteredResults: [...filteredResults], loading: false})
 	}
 

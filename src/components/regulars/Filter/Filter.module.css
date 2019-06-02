@@ -2,6 +2,10 @@
 	text-align: left;
 	padding: 20px;
 	background-color: lightskyblue;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
 }
 
 .AgeFromIndicator {

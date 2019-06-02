@@ -42,7 +42,10 @@ class Itinerary extends Component {
 		return (
 			<div className={classes.ItineraryCont}>
 				<h1>Define Itinerary</h1>
-				<p> Define you trip's itinerary and Travelify will help you find people to travel with </p>
+				<p>
+					{" "}
+					Define you trip's itinerary and Travelify will help you find people to travel with{" "}
+				</p>
 				<div className={classes.DestinationsCont}>{destinationsCollection}</div>
 				<Button type='add' btnAction={this.props.destinationAdded}>
 					+
@@ -68,7 +71,6 @@ const mapDispatchToProps = dispatch => {
 			dispatch(actionCreators.getDestinationsStart())
 		},
 
-		// NOT DONE YET (updateItinerary) - should send data to db
 		updateItinerary: () => {
 			dispatch(actionCreators.updateItinerary())
 		},
