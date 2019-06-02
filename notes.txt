@@ -5,6 +5,7 @@ before deploying:
 -make sure router route is setup (should be fine)
 -change node port to not be 4000
 -change all server strings to server address
+-clear api keys from public folder and any other file
 
 
 import React, {Component} from "react"

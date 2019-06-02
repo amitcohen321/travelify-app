@@ -10,6 +10,7 @@
 
 #files
 notes.txt
+consts.js
 
 # production
 /build

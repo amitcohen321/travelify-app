@@ -2,6 +2,7 @@ import React, {Component} from "react"
 import Results from "../Results/Results"
 import axios from "axios"
 import openSocket from "socket.io-client"
+import consts from "../../../consts"
 
 // REDUX
 import {connect} from "react-redux"
@@ -42,7 +43,7 @@ class RealTime extends Component {
 				.get(
 					`https://maps.googleapis.com/maps/api/geocode/json?latlng=${
 						position.coords.latitude
-					},${position.coords.longitude}&key=AIzaSyB7eI-YGiO4YLpdtmjpbAtemZC2BjnWb34`
+					},${position.coords.longitude}&key=${consts.GOOGLE_MAPS_API_KEY}`
 				)
 				.then(res => {
 					let compoundCode = res.data.plus_code.compound_code
