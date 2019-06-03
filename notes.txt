@@ -6,6 +6,7 @@ before deploying:
 -change node port to not be 4000
 -change all server strings to server address
 -clear api keys from public folder and any other file
+-fix mails not received mail from sendgrid
 
 
 import React, {Component} from "react"
