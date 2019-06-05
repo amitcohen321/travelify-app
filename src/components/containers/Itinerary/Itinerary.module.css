@@ -1,8 +1,6 @@
 .DestinationsCont {
-	background-color: lightgreen;
-	width: 100%;
 	display: block;
-	height: auto;
+	margin-top: 30px !important;
 }
 
 .AddDestBtn {
@@ -12,5 +10,5 @@
 }
 
 .ItineraryCont {
-	background-color: lightgrey;
+	background-color: lightskyblue;
 }

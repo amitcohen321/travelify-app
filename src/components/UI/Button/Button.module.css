@@ -1,14 +1,7 @@
-.Btn {
-	margin: 10px;
-	border-radius: 5px;
+button[data-class="my-btn"] {
+	margin: 10px !important;
 }
 
-.BtnApprove {
-	color: white;
-	background-color: green;
-}
-
-.BtnDecline {
-	color: white;
-	background-color: red;
+i[data-class="my-btn"] {
+	margin: 10px !important;
 }

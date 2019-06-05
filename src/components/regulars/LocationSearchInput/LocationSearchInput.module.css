@@ -1,3 +1,7 @@
 .LocationInputCont {
 	display: inline;
 }
+
+.autocomplete-dropdown-container {
+	display: block !important;
+}

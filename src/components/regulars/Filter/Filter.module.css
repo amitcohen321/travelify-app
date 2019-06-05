@@ -17,3 +17,18 @@
 	flex-direction: row;
 	flex-wrap: wrap;
 }
+
+select {
+	border-radius: 5px;
+}
+
+label {
+	display: block;
+}
+
+.input-cont {
+	width: 400px;
+}
+
+input[type="checkbox"] {
+}

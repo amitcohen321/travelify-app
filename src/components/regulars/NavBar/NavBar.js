@@ -1,32 +1,50 @@
-import React from "react"
-import classes from "./NavBar.module.css"
+import React, {Component} from "react"
+import {Menu} from "semantic-ui-react"
 import {NavLink} from "react-router-dom"
-import logo from "../../../assets/travelify-logo.png"
 
-const NavBar = props => {
-	return (
-		<div className={classes.NavBar}>
-			<div className={classes.Logo}>
-				<img src={logo} alt='travelify-logo' />
-			</div>
-			<ul>
-				<li>
-					<NavLink to='/search'>Search</NavLink>
-				</li>
-				<li>
-					<NavLink to='/itinerary'>Itinerary</NavLink>
-				</li>
-				<li>
-					<NavLink to='/realtime'>
-						Real-Time<span> (soon)</span>
-					</NavLink>
-				</li>
-				<li>
-					<NavLink to='/settings'>Settings</NavLink>
-				</li>
-			</ul>
-		</div>
-	)
+export default class NavBar extends Component {
+	state = {activeItem: "abcd"}
+
+	handleItemClick = (e, {name}) => this.setState({activeItem: name})
+
+	// const {activeItem} = this.state
+
+	handleItemClick = (e, {name}) => this.setState({activeItem: name})
+
+	render() {
+		const {activeItem} = this.state
+
+		return (
+			<Menu color='violet' inverted widths={4}>
+				<Menu.Item
+					as={NavLink}
+					to='/search'
+					name='🔍 Search'
+					active={activeItem === "search"}
+					onClick={this.handleItemClick}
+				/>
+				<Menu.Item
+					as={NavLink}
+					to='/itinerary'
+					name='🗺️ Itinerary'
+					active={activeItem === "itinerary"}
+					onClick={this.handleItemClick}
+				/>
+				<Menu.Item
+					as={NavLink}
+					to='/realtime'
+					name='⏱️ Real-Time'
+					active={activeItem === "realtime"}
+					onClick={this.handleItemClick}
+				/>
+				<Menu.Item
+					as={NavLink}
+					to='/settings'
+					name='⚙️ Settings'
+					active={activeItem === "settings"}
+					onClick={this.handleItemClick}
+				/>
+			</Menu>
+		)
+	}
 }
-
-export default NavBar

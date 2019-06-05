@@ -40,16 +40,25 @@ class Itinerary extends Component {
 		})
 
 		return (
-			<div className={classes.ItineraryCont}>
-				<h1>Define Itinerary</h1>
-				<p>
-					{" "}
-					Define you trip's itinerary and Travelify will help you find people to travel with{" "}
-				</p>
-				<div className={classes.DestinationsCont}>{destinationsCollection}</div>
-				<Button type='add' btnAction={this.props.destinationAdded}>
-					+
-				</Button>
+			<div>
+				<div className={classes.ItineraryCont}>
+					<h1>Define Itinerary</h1>
+					<p>
+						{" "}
+						Define you trip's itinerary and Travelify will help you find people that meet you
+						on the road
+					</p>
+					<div className={classes.DestinationsCont}>
+						{destinationsCollection.length > 0 ? (
+							destinationsCollection
+						) : (
+							<h3>Start by adding them destinations...</h3>
+						)}
+					</div>
+					<Button type='add' btnAction={this.props.destinationAdded}>
+						<i class='plus circle icon' />
+					</Button>
+				</div>
 				<Button type='apply' btnAction={this.updateUserToDatabase}>
 					Apply
 				</Button>

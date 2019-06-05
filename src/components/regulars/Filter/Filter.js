@@ -1,26 +1,27 @@
 import React from "react"
 import classes from "./Filter.module.css"
+import {Dropdown} from "semantic-ui-react"
 
 const Filter = props => {
 	return (
 		<div className={classes.FilterCont}>
 			<div>
-				<label htmlFor='gender'>Gender</label>
+				<label for='gender'> Gender </label>
 				<select
-					value={props.filters.gender}
+					value={props.filters.gender ? props.filters.gender : "Select Gender..."}
 					id='gender'
-					onChange={event => props.handleFilterChange("gender", event.target.value)}>
+					onChange={event => props.handleFilterChange("gender", event.target.value)}
+					className='ui dropdown'>
+					<option>Select Gender...</option>
 					<option value='any'>Any</option>
-					<option value='male'>Male</option>
-					<option value='female'>Female</option>
+					<option value='male'>Male 👨</option>
+					<option value='female'>Female 👩</option>
 				</select>
 			</div>
 
-			<div>
-				<label htmlFor='mainLang'>Main Language</label>
-				<select
-					id='mainLang'
-					value={props.filters.mainLang}
+			<div className='input-cont'>
+				<label>Main Language</label>
+				<select id='mainLang' value={props.filters.mainLang} className='ui dropdown'>
 					onChange={event => props.handleFilterChange("mainLang", event.target.value)}>
 					<option value='any'>Any</option>
 					<option value='english'>English</option>
@@ -32,7 +33,7 @@ const Filter = props => {
 
 				{props.filters.mainLang === "english" ? null : (
 					<div>
-						<label htmlFor='speaks_english'>Have to speak English?</label>
+						<span htmlFor='speaks_english'>Have to speak English?</span>
 						{props.filters.isEnglish ? (
 							<input
 								type='checkbox'

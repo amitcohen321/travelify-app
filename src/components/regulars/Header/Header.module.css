@@ -1,23 +1,25 @@
-.NavBar {
+.Header {
 	position: sticky;
 	width: 100%;
 	height: auto;
-	background-color: lightblue;
+	background-color: #b2ebf9;
 	top: 0;
 	min-height: 80px;
+	z-index: 300;
 }
 
 .Logo {
-	width: 50px;
-	position: absolute;
-	margin: 16px;
+	width: 140px;
+	position: relative;
+	margin: auto;
+	top: 10px;
 }
 
 .Logo img {
 	width: 100%;
 }
 
-ul {
+/* ul {
 	list-style-type: none;
 	display: inline;
 	position: absolute;
@@ -30,4 +32,4 @@ ul li {
 	border-left: 1px solid grey;
 	padding: 10px;
 	background-color: rgb(207, 207, 241);
-}
+} */

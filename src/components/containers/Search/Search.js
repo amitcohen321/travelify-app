@@ -69,6 +69,7 @@ class Search extends Component {
 	}
 
 	applyFilters = () => {
+		console.log("results from db", this.state.resultsFromDB)
 		// todo: Have the isEnglish thing a boolean all the time
 		const filteredResults = this.state.resultsFromDB.filter(result => {
 			const asBool = result.language.speaksEnglish === "true" // conver str bool to actual bool
@@ -83,7 +84,7 @@ class Search extends Component {
 				return true
 			}
 		})
-		console.log(filteredResults)
+		console.log("filtered results:", filteredResults)
 		this.setState({filteredResults: [...filteredResults], loading: false})
 	}
 

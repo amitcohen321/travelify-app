@@ -6,24 +6,32 @@ const Destination = props => {
 	return (
 		<>
 			<div className={classes.DestinationCont}>
-				<div className={classes.deleteDestBtn} onClick={() => props.removeHandler(props.id)}>
-					REMOVE
+				<i class='trash icon red large' onClick={() => props.removeHandler(props.id)} />
+				<div class='ui input focus'>
+					<input
+						type='date'
+						name='startdate'
+						value={props.startDate}
+						onChange={event =>
+							props.destEditHandler(props.id, "startDate", event.target.value)
+						}
+					/>
 				</div>
-				<input
-					type='date'
-					name='startdate'
-					value={props.startDate}
-					onChange={event => props.destEditHandler(props.id, "startDate", event.target.value)}
+				<span> - </span>
+				<div class='ui input focus'>
+					<input
+						type='date'
+						name='enddate'
+						value={props.endDate}
+						onChange={event => props.destEditHandler(props.id, "endDate", event.target.value)}
+					/>
+				</div>
+				<span> > </span>
+				<LocationSearchInput
+					locationName={props.location.name}
+					id={props.id}
+					destEditHandler={props.destEditHandler}
 				/>
-				<span>-</span>
-				<input
-					type='date'
-					name='enddate'
-					value={props.endDate}
-					onChange={event => props.destEditHandler(props.id, "endDate", event.target.value)}
-				/>
-
-				<LocationSearchInput locationName={props.location.name} id={props.id} destEditHandler={props.destEditHandler} />
 			</div>
 		</>
 	)

@@ -1,10 +1,12 @@
 .ResultsCont {
-	background-color: lightblue;
-	padding: 20px;
-	margin: 0px;
+	background: #7045cd;
+	background: -webkit-radial-gradient(bottom right, #7045cd, #572eaf);
+	background: -moz-radial-gradient(bottom right, #7045cd, #572eaf);
+	background: radial-gradient(to top left, #7045cd, #572eaf);
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
-	justify-content: space-around;
-	text-align: center;
+	justify-content: flex-start;
+	padding: 20px;
+	margin: 0px;
 }

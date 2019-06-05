@@ -3,7 +3,7 @@ import * as utils from "../components/Utils/utils"
 
 const initialState = {
 	loginInfo: {
-		isLoggedIn: false,
+		isLoggedIn: true,
 		token: "",
 		fbUserId: ""
 	},

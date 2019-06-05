@@ -1,24 +1,26 @@
-.ResultThumbnailCont {
-	margin: 10px;
-	width: 28%;
-	height: auto;
-	background-image: linear-gradient(to right, #339df7d1, #00e1ff);
-	padding: 10px;
-	box-shadow: 5px 5px 5px lightgray;
-	border-radius: 10px;
-	text-align: -webkit-center;
-	font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+div[data-class="my-extra-content"] {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
 }
 
-.Avatar {
-	width: 35%;
+div[data-class="my-extra-content"] i {
+	margin: 0px;
 }
 
-.Avatar img {
-	width: 100%;
-	border-radius: 75px;
+div[data-class="my-card"] {
+	width: 20% !important;
+	border: 0px;
 }
 
-.ButtonsCont {
-	margin: 10px;
+div[data-class="my-description"] {
+	text-align: left;
+}
+
+div[data-class="my-content"] {
+	font-size: 1.5vw !important;
+}
+
+i {
+	cursor: pointer;
 }

@@ -1,6 +1,6 @@
 import React, {Component} from "react"
 import {Switch, Route} from "react-router-dom"
-import NavBar from "../../regulars/NavBar/NavBar"
+import Header from "../../regulars/Header/Header"
 import Search from "../Search/Search"
 import Itinerary from "../Itinerary/Itinerary"
 import RealTime from "../RealTime/RealTime"
@@ -14,7 +14,7 @@ class Main extends Component {
 	render() {
 		const routes = this.props.isLoggedIn ? (
 			<>
-				<NavBar />
+				<Header />
 				<Switch>
 					<Route path='/' exact component={Search} />
 					<Route path='/search' exact component={Search} />
