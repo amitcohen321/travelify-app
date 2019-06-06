@@ -25,16 +25,16 @@ export default class NavBar extends Component {
 				/>
 				<Menu.Item
 					as={NavLink}
-					to='/itinerary'
-					name='🗺️ Itinerary'
-					active={activeItem === "itinerary"}
+					to='/realtime'
+					name='⏱️ Real-Time'
+					active={activeItem === "realtime"}
 					onClick={this.handleItemClick}
 				/>
 				<Menu.Item
 					as={NavLink}
-					to='/realtime'
-					name='⏱️ Real-Time'
-					active={activeItem === "realtime"}
+					to='/itinerary'
+					name='🗺️ Itinerary'
+					active={activeItem === "itinerary"}
 					onClick={this.handleItemClick}
 				/>
 				<Menu.Item

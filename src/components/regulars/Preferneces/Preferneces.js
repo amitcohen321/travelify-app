@@ -3,9 +3,9 @@ import classes from "./Preferneces.module.css"
 
 const Preferneces = props => {
 	return (
-		<div className={classes.PrefernecesContainer}>
+		<div className={classes.PrefernecesCont}>
 			<h2>Preferneces</h2>
-			<div>
+			<div className={classes.InputsCont}>
 				<label htmlFor='input_radius'>
 					Radius <sub>(for Real-Time only)</sub>
 				</label>
@@ -17,27 +17,35 @@ const Preferneces = props => {
 					max='30'
 					onChange={event => props.prefernecesEditHandler("radius", event.target.value)}
 				/>
-				<input className={classes.RadiusIndicator} type='text' value={props.preferneces.radius} />
-			</div>
+				<input
+					className={classes.RadiusIndicator}
+					type='text'
+					value={props.preferneces.radius}
+				/>
 
-			<div>
-				<label htmlFor='input_discoverable'>Discoverable?</label>
+				<div>
+					<label htmlFor='input_discoverable'>Discoverable?</label>
 
-				{/* TODO: consider trying to have it without conditionaly render the input but rather only 1 */}
-				{props.preferneces.discoverable ? (
-					<input
-						type='checkbox'
-						id='input_discoverable'
-						checked
-						onChange={event => props.prefernecesEditHandler("discoverable", event.target.checked)}
-					/>
-				) : (
-					<input
-						type='checkbox'
-						id='input_discoverable'
-						onChange={event => props.prefernecesEditHandler("discoverable", event.target.checked)}
-					/>
-				)}
+					{/* TODO: consider trying to have it without conditionaly render the input but rather only 1 */}
+					{props.preferneces.discoverable ? (
+						<input
+							type='checkbox'
+							id='input_discoverable'
+							checked
+							onChange={event =>
+								props.prefernecesEditHandler("discoverable", event.target.checked)
+							}
+						/>
+					) : (
+						<input
+							type='checkbox'
+							id='input_discoverable'
+							onChange={event =>
+								props.prefernecesEditHandler("discoverable", event.target.checked)
+							}
+						/>
+					)}
+				</div>
 			</div>
 		</div>
 	)

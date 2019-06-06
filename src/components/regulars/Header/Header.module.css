@@ -1,8 +1,9 @@
 .Header {
+	background: rgb(15, 219, 212);
+	background: linear-gradient(128deg, rgba(15, 219, 212, 1) 0%, rgba(45, 47, 253, 1) 100%);
 	position: sticky;
 	width: 100%;
 	height: auto;
-	background-color: #b2ebf9;
 	top: 0;
 	min-height: 80px;
 	z-index: 300;

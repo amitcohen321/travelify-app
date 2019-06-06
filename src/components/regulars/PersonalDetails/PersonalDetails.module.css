@@ -1,12 +1,37 @@
 .PersonalDetailsCont {
-	text-align: -webkit-center;
+	display: block;
+	text-align: center;
+}
+
+.DetailsCont {
+	display: inline-block;
+	text-align: left;
+	padding: 20px;
+	margin: 10px;
+}
+
+.InputsCont {
+	display: inline-block;
+	text-align: left;
+	padding: 20px;
+	margin: 10px;
 }
 
 .ImageCont {
+	display: inline-block;
 	width: 20%;
 }
 
 .ImageCont img {
 	width: 100%;
 	border-radius: 100px;
+}
+
+label {
+	display: inline;
+}
+
+.HorizontalShort {
+	border: 1px solid #4fb1ff;
+	width: 10%;
 }

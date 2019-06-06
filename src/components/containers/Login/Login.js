@@ -3,6 +3,7 @@ import FacebookLogin from "react-facebook-login"
 import classes from "./Login.module.css"
 import {store} from "../../../App"
 import * as ServerLogic from "../../Utils/ServerLogic/ServerLogic"
+import logo from "../../../assets/travelify-logo.png"
 
 // REDUX
 import {connect} from "react-redux"
@@ -38,6 +39,9 @@ class Login extends Component {
 	render() {
 		return (
 			<div className={classes.LoginCont}>
+				<div className={classes.Logo}>
+					<img src={logo} alt='travelify-logo' />
+				</div>
 				<div className={classes.FacebookLoginButtonCont}>
 					<FacebookLogin
 						appId='320090962007782'

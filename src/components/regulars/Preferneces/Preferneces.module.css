@@ -1,5 +1,15 @@
-.PrefernecesContainer {
-	background-color: lightcoral;
+.PrefernecesCont {
+	display: block;
+	text-align: center;
+	padding: 20px;
+	margin: 10px;
+}
+
+.InputsCont {
+	display: inline-block;
+	text-align: left;
+	padding: 20px;
+	margin: 10px;
 }
 
 .RadiusIndicator {

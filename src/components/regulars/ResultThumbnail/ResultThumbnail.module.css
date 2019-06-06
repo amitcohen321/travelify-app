@@ -9,7 +9,7 @@ div[data-class="my-extra-content"] i {
 }
 
 div[data-class="my-card"] {
-	width: 20% !important;
+	width: 18% !important;
 	border: 0px;
 }
 
@@ -18,7 +18,7 @@ div[data-class="my-description"] {
 }
 
 div[data-class="my-content"] {
-	font-size: 1.5vw !important;
+	font-size: 1.2vw !important;
 }
 
 i {

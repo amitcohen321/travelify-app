@@ -3,6 +3,7 @@ import Results from "../Results/Results"
 import axios from "axios"
 import openSocket from "socket.io-client"
 import consts from "../../../consts"
+import classes from "./RealTime.module.css"
 
 // REDUX
 import {connect} from "react-redux"
@@ -71,21 +72,23 @@ class RealTime extends Component {
 	render() {
 		return (
 			<div className='RealTimeCont'>
-				{this.state.isGeolocationAvailable ? (
-					<h3> geolocation is available on your device</h3>
-				) : (
+				{this.state.isGeolocationAvailable ? null : (
 					<h3> geolocation is NOT available on your device :/</h3>
 				)}
-				{this.state.isGeolocationEnabled ? (
-					<h3> geolocation is enabled </h3>
-				) : (
-					<h3> geolocation is NOT enabled, please Approve </h3>
+				{this.state.isGeolocationEnabled ? null : (
+					<h3> geolocation is NOT enabled, please Approve once asked by the browser </h3>
 				)}
 				{this.state.isGeolocationAvailable && this.state.isGeolocationEnabled ? (
 					<>
-						<h2>You are now discoverable until you leave this page</h2>
-						<h2>Here are the people currently in your location</h2>
-						<h2>Don't hesitate to check them out and message them if you feel like!</h2>
+						<div className={classes.RealTimeTop}>
+							<h1>Real Time buddies finder</h1>
+							<p>
+								You are now discoverable until you leave this page The people currenty in
+								<br />
+								your location are presented here. Don't hesitate to check them out and
+								message them if you feel like!
+							</p>
+						</div>
 						<Results
 							resultsToShow={this.state.usersToShow}
 							// moreInfoClickHandler={this.setProfileScreenToShow}

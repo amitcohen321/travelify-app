@@ -3,9 +3,11 @@ import classes from "./Loader.module.css"
 
 const Loader = () => {
 	return (
-		<div className={classes.LdsRipple}>
-			<div />
-			<div />
+		<div className={classes.LoaderCont}>
+			<div className={classes.LdsRipple}>
+				<div />
+				<div />
+			</div>
 		</div>
 	)
 }

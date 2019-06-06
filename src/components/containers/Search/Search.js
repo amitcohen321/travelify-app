@@ -130,15 +130,17 @@ class Search extends Component {
 					</>
 				)}
 				<Filter filters={this.state.filters} handleFilterChange={this.handleFilterChange} />
-				{this.state.loading ? (
-					<Loader />
-				) : (
-					<Results
-						resultsToShow={this.state.filteredResults}
-						moreInfoClickHandler={this.setProfileScreenToShow}
-						sendMessageClickHandler={this.setSendMesssageScreenToShow}
-					/>
-				)}
+				<div>
+					{this.state.loading ? (
+						<Loader />
+					) : (
+						<Results
+							resultsToShow={this.state.filteredResults}
+							moreInfoClickHandler={this.setProfileScreenToShow}
+							sendMessageClickHandler={this.setSendMesssageScreenToShow}
+						/>
+					)}
+				</div>
 			</>
 		)
 	}

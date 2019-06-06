@@ -24,8 +24,18 @@ class Settings extends Component {
 	render() {
 		return (
 			<div className={classes.SettingsCont}>
-				<PersonalDetails personalDetailsEditHandler={this.props.personalDetailsValueChanged} userInfo={this.props.userInfo} />
-				<Preferneces prefernecesEditHandler={this.props.prefernecesValueChanged} preferneces={this.props.preferneces} />
+				<PersonalDetails
+					personalDetailsEditHandler={this.props.personalDetailsValueChanged}
+					userInfo={this.props.userInfo}
+				/>
+				<hr className={classes.HorizontalShort} />
+
+				<Preferneces
+					prefernecesEditHandler={this.props.prefernecesValueChanged}
+					preferneces={this.props.preferneces}
+				/>
+				<hr className={classes.HorizontalLong} />
+
 				<Button type='apply' btnAction={this.updateUserToDatabase}>
 					Apply
 				</Button>

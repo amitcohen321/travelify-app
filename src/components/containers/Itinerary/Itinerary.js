@@ -52,16 +52,20 @@ class Itinerary extends Component {
 						{destinationsCollection.length > 0 ? (
 							destinationsCollection
 						) : (
-							<h3>Start by adding them destinations...</h3>
+							<h3>Start by adding destinations...</h3>
 						)}
 					</div>
 					<Button type='add' btnAction={this.props.destinationAdded}>
 						<i class='plus circle icon' />
 					</Button>
+
+					<hr className={classes.HorizontalLong} />
+
+					<Button type='apply' btnAction={this.updateUserToDatabase}>
+						Apply
+					</Button>
 				</div>
-				<Button type='apply' btnAction={this.updateUserToDatabase}>
-					Apply
-				</Button>
+
 				{this.state.isItineraryUpdated ? <span role='checkmark'>Saved! ✅</span> : null}
 			</div>
 		)

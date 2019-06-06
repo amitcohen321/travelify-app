@@ -1,6 +1,7 @@
 import React, {Component} from "react"
 import {Switch, Route} from "react-router-dom"
 import Header from "../../regulars/Header/Header"
+import Footer from "../../regulars/Footer/Footer"
 import Search from "../Search/Search"
 import Itinerary from "../Itinerary/Itinerary"
 import RealTime from "../RealTime/RealTime"
@@ -18,10 +19,11 @@ class Main extends Component {
 				<Switch>
 					<Route path='/' exact component={Search} />
 					<Route path='/search' exact component={Search} />
-					<Route path='/itinerary' exact component={Itinerary} />
 					<Route path='/realtime' exact component={RealTime} />
+					<Route path='/itinerary' exact component={Itinerary} />
 					<Route path='/settings' exact component={Settings} />
 				</Switch>
+				<Footer />
 			</>
 		) : (
 			<Login />

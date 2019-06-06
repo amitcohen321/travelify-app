@@ -1,9 +1,18 @@
+.LoaderCont {
+	display: block;
+	position: relative;
+	width: 100%;
+	height: auto;
+	padding: 10px;
+}
+
 .LdsRipple {
 	display: inline-block;
-	position: relative;
+	position: sticky;
 	top: 35px;
 	width: 64px;
 	height: 64px;
+	margin: 25px;
 }
 .LdsRipple div {
 	position: absolute;

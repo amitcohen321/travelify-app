@@ -12,3 +12,8 @@
 .ItineraryCont {
 	background-color: lightskyblue;
 }
+
+.HorizontalLong {
+	border: 1px solid #4fb1ff;
+	width: 90%;
+}

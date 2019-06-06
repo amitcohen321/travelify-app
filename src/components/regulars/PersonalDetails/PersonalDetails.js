@@ -13,7 +13,9 @@ const PersonalDetails = props => {
 						type='checkbox'
 						id='speaks_english'
 						checked
-						onChange={event => props.personalDetailsEditHandler("speaksEnglish", event.target.checked)}
+						onChange={event =>
+							props.personalDetailsEditHandler("speaksEnglish", event.target.checked)
+						}
 					/>
 				</>
 		  ))
@@ -23,7 +25,9 @@ const PersonalDetails = props => {
 					<input
 						type='checkbox'
 						id='speaks_english'
-						onChange={event => props.personalDetailsEditHandler("speaksEnglish", event.target.checked)}
+						onChange={event =>
+							props.personalDetailsEditHandler("speaksEnglish", event.target.checked)
+						}
 					/>
 				</>
 		  ))
@@ -31,20 +35,19 @@ const PersonalDetails = props => {
 	return (
 		<div className={classes.PersonalDetailsCont}>
 			<h2> Personal Details </h2>
+			<hr className={classes.HorizontalShort} />
 			<h3>{props.userInfo.name}</h3>
 			<div className={classes.ImageCont}>
 				<img src={props.userInfo.imageUrl} alt='user-avatar' />
 			</div>
-			<br />
-			<div>
-				<span>age: {props.userInfo.age}, </span>
-				<span>from {props.userInfo.residence}</span>
+			<div className={classes.DetailsCont}>
+				<p>{props.userInfo.email}</p>
+				<p>Age: {props.userInfo.age} </p>
+				<p>From: {props.userInfo.residence}</p>
 			</div>
+			<hr className={classes.HorizontalShort} />
 
-			<div className={classes.EmailCont}>
-				<span>{props.userInfo.email}</span>
-			</div>
-			<div>
+			<div className={classes.InputsCont}>
 				<label htmlFor='main_language'>Main spoken language</label>
 				<select
 					value={props.userInfo.language.mainLang}
@@ -57,9 +60,9 @@ const PersonalDetails = props => {
 					<option value='hebrew'>Hebrew</option>
 					<option value='spanish'>Spanish</option>
 				</select>
-
+				<br />
 				{props.userInfo.language.mainLang === "english" ? null : englishInput}
-
+				<br />
 				<div>
 					<textarea
 						id='about'
@@ -67,7 +70,7 @@ const PersonalDetails = props => {
 						rows='5'
 						cols='33'
 						onChange={event => props.personalDetailsEditHandler("about", event.target.value)}
-						placeholder='Tell us about you...'
+						placeholder='Tell people about you...'
 						value={props.userInfo.about}
 					/>
 				</div>

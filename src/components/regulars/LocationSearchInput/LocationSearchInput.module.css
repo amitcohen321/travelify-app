@@ -2,6 +2,7 @@
 	display: inline;
 }
 
-.autocomplete-dropdown-container {
+div.suggestions-container {
 	display: block !important;
+	background-color: red;
 }
