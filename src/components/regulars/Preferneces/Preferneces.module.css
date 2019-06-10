@@ -15,3 +15,11 @@
 .RadiusIndicator {
 	width: 15px;
 }
+
+.error {
+	border: red;
+}
+
+.RadiusIndicator {
+	width: 22px;
+}

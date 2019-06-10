@@ -11,3 +11,13 @@
 	border: 1px solid #4fb1ff;
 	width: 10%;
 }
+
+.ErrorsCont {
+	display: flex;
+	flex-direction: column;
+}
+.ErrorMessage {
+	background-color: lightcoral;
+	display: inline-block;
+	margin: 5px;
+}

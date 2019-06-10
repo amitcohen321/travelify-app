@@ -79,7 +79,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => {
-	return {
+	return {	
 		onItineraryInit: () => {
 			dispatch(actionCreators.getDestinationsStart())
 		},

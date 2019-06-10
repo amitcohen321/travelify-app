@@ -1,5 +1,6 @@
 import React from "react"
 import classes from "./Preferneces.module.css"
+import * as utils from "../../Utils/utils"
 
 const Preferneces = props => {
 	return (
@@ -10,6 +11,11 @@ const Preferneces = props => {
 					Radius <sub>(for Real-Time only)</sub>
 				</label>
 				<input
+					className={
+						utils.isObjInArrByAttr(props.fillErrors, "preferneces.radius")
+							? classes.Error
+							: ""
+					}
 					type='range'
 					id='input_radius'
 					value={props.preferneces.radius}

@@ -1,8 +1,9 @@
 import React from "react"
 import classes from "./PersonalDetails.module.css"
+import * as utils from "../../Utils/utils"
 
 const PersonalDetails = props => {
-	console.log(props)
+	console.log(props.fillErrors)
 	let englishInput = null
 
 	props.userInfo.language.speaksEnglish === "true"
@@ -65,6 +66,9 @@ const PersonalDetails = props => {
 				<br />
 				<div>
 					<textarea
+						className={
+							utils.isObjInArrByAttr(props.fillErrors, "userInfo.about") ? classes.Error : ""
+						}
 						id='about'
 						name='about'
 						rows='5'
@@ -73,6 +77,7 @@ const PersonalDetails = props => {
 						placeholder='Tell people about you...'
 						value={props.userInfo.about}
 					/>
+					<p>must be more than 10 characters</p>
 				</div>
 			</div>
 		</div>

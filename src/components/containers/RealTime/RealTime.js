@@ -82,12 +82,9 @@ class RealTime extends Component {
 					<>
 						<div className={classes.RealTimeTop}>
 							<h1>Real Time buddies finder</h1>
-							<p>
-								You are now discoverable until you leave this page The people currenty in
-								<br />
-								your location are presented here. Don't hesitate to check them out and
-								message them if you feel like!
-							</p>
+							<p> You are now discoverable until you leave this page </p>{" "}
+							<p>The people currenty in your location are presented here.</p>
+							<p> Don't hesitate to check them out and message them if you feel like!</p>
 						</div>
 						<Results
 							resultsToShow={this.state.usersToShow}

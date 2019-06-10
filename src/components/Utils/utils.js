@@ -8,3 +8,14 @@ export const getAge = bday => {
 	}
 	return age
 }
+
+export const isObjInArrByAttr = (arr, value) => {
+	let found = false
+	arr.forEach(element => {
+		if (element.field === value) {
+			found = true
+			return
+		}
+	})
+	return found
+}

@@ -12,34 +12,64 @@ import * as actionCreators from "../../../store/actionCreators"
 
 class Settings extends Component {
 	state = {
-		isUserUpdated: false
+		isUserUpdated: false,
+		fillErrors: []
 	}
 
 	updateUserToDatabase = () => {
 		ServerLogic.updateUserSettingsOnDb(store.getState())
-			.then(res => this.setState({isUserUpdated: true}))
-			.catch(err => console.log(err))
+			.then(res => {
+				console.log(res)
+				this.setState({fillErrors: [], isUserUpdated: true})
+			})
+			.catch(err => {
+				const fillErrorsArr = []
+				console.log(err.response.data.error)
+				console.log(err.response)
+				console.log(err.response.data.errors[0].param)
+				console.log(err.response.data.errors[0].msg)
+				err.response.data.errors.forEach(errorElement => {
+					fillErrorsArr.push({
+						field: errorElement.param,
+						message: errorElement.msg
+					})
+				})
+				this.setState({fillErrors: [...fillErrorsArr], isUserUpdated: false})
+			})
 	}
 
 	render() {
+		const errorMessages = []
+		this.state.fillErrors.forEach(error => {
+			errorMessages.push(<span className={classes.ErrorMessage}>{error.message}</span>)
+		})
+
 		return (
 			<div className={classes.SettingsCont}>
 				<PersonalDetails
 					personalDetailsEditHandler={this.props.personalDetailsValueChanged}
 					userInfo={this.props.userInfo}
+					fillErrors={this.state.fillErrors}
 				/>
 				<hr className={classes.HorizontalShort} />
 
 				<Preferneces
 					prefernecesEditHandler={this.props.prefernecesValueChanged}
 					preferneces={this.props.preferneces}
+					fillErrors={this.state.fillErrors}
 				/>
+
 				<hr className={classes.HorizontalLong} />
 
 				<Button type='apply' btnAction={this.updateUserToDatabase}>
 					Apply
 				</Button>
-				{this.state.isUserUpdated ? <span role='checkmark-emoji'> Saved! ✅</span> : null}
+
+				{this.state.isUserUpdated ? (
+					<span role='checkmark-emoji'> Saved! ✅</span>
+				) : (
+					<div className={classes.ErrorsCont}>{errorMessages}</div>
+				)}
 			</div>
 		)
 	}
