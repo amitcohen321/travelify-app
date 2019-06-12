@@ -4,12 +4,14 @@ import axios from "axios"
 import openSocket from "socket.io-client"
 import consts from "../../../consts"
 import classes from "./RealTime.module.css"
+import Loader from "../../UI/Loader/Loader"
 
 // REDUX
 import {connect} from "react-redux"
 
 class RealTime extends Component {
 	state = {
+		loading: true,
 		usersToShow: [],
 		userWithLocation: null,
 		isGeolocationAvailable: navigator.geolocation,
@@ -24,7 +26,7 @@ class RealTime extends Component {
 			connectedUsers.forEach(user => {
 				if (user.location === this.state.userWithLocation.location) {
 					users.push(this.state.userWithLocation.user)
-					this.setState({usersToShow: [...users]})
+					this.setState({loading: false, usersToShow: [...users]})
 				}
 			})
 		})
@@ -64,7 +66,7 @@ class RealTime extends Component {
 	}
 
 	componentWillUnmount() {
-		// notify all users that im leaving
+		// notify all users that im leaving through the server
 		axios.post("http://localhost:4000/realtime/user-left", this.state.userWithLocation)
 		this.socket.close()
 	}
@@ -86,11 +88,16 @@ class RealTime extends Component {
 							<p>The people currenty in your location are presented here.</p>
 							<p> Don't hesitate to check them out and message them if you feel like!</p>
 						</div>
-						<Results
-							resultsToShow={this.state.usersToShow}
-							// moreInfoClickHandler={this.setProfileScreenToShow}
-							// sendMessageClickHandler={this.setSendMesssageScreenToShow}
-						/>
+
+						{this.state.loading ? (
+							<Loader />
+						) : (
+							<Results
+								resultsToShow={this.state.usersToShow}
+								// moreInfoClickHandler={this.setProfileScreenToShow}
+								// sendMessageClickHandler={this.setSendMesssageScreenToShow}
+							/>
+						)}
 					</>
 				) : null}
 			</div>

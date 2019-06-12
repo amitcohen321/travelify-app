@@ -1,5 +1,5 @@
 import React, {Component} from "react"
-import classes from "./MessaegForm.module.css"
+import "./MessaegForm.scss"
 import * as ServerLogic from "../../Utils/ServerLogic/ServerLogic"
 
 class MessageForm extends Component {
@@ -40,25 +40,14 @@ class MessageForm extends Component {
 
 	render() {
 		return (
-			<div className={classes.FromCont}>
+			<div className='FromCont'>
 				<p>
 					<b>From:</b> {this.props.sender.name}{" "}
 				</p>
 				<p>
 					<b>To:</b> {this.props.recipient.name}
 				</p>
-				<form className={classes.Form}>
-					{/* <label for='subject'>Subject:</label>
-					<input
-						type='text'
-						name='subject'
-						required
-						maxlength='10'
-						size='15'
-						value={this.state.subjectText}
-						onChange={this.subjectChangeHandler}
-					/>
-					<br /> */}
+				<form className='Form'>
 					<textarea
 						placeholder={`Hey! My name is ${
 							this.props.sender.name.split(" ")[0]
@@ -70,10 +59,18 @@ class MessageForm extends Component {
 						onChange={this.textChangeHandler}
 					/>
 					<br />
-					<input type='button' value='Send' onClick={this.sendEmail} />
+					<span>*The recipient will also receive a link to your public Facebook profile</span>
+					<br />
+					<br />
+					<button
+						data-class='my-send-btn'
+						class='ui primary button my-send-btn'
+						onClick={this.sendEmail}>
+						Send <i class='arrow alternate circle right icon ' />
+					</button>
+
 					{this.state.messageSent ? <span>Message Sent!</span> : null}
 				</form>
-				<span>*The recipent will also receive a link to your public Facebook profile</span>
 			</div>
 		)
 	}

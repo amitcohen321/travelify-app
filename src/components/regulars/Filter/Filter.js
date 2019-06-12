@@ -1,11 +1,10 @@
 import React from "react"
-import classes from "./Filter.module.css"
-import {Dropdown} from "semantic-ui-react"
+import "./Filter.scss"
 
 const Filter = props => {
 	return (
-		<div className={classes.FilterCont}>
-			<div>
+		<div className='FilterCont'>
+			<div class='gender-cont'>
 				<label for='gender'> Gender </label>
 				<select
 					value={props.filters.gender ? props.filters.gender : "Select Gender..."}
@@ -70,7 +69,7 @@ const Filter = props => {
 					max='65'
 					onChange={event => props.handleFilterChange("ageFrom", event.target.value)}
 				/>
-				<input className={classes.AgeFromIndicator} type='text' value={props.filters.ageFrom} />
+				<input className='AgeFromIndicator' type='text' value={props.filters.ageFrom} />
 				<br />
 				<label htmlFor='ageTo'>To</label>
 				<input
@@ -81,7 +80,7 @@ const Filter = props => {
 					max='65'
 					onChange={event => props.handleFilterChange("ageTo", event.target.value)}
 				/>
-				<input className={classes.AgeFromIndicator} type='text' value={props.filters.ageTo} />
+				<input className='AgeFromIndicator' type='text' value={props.filters.ageTo} />
 			</div>
 		</div>
 	)

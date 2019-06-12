@@ -1,7 +1,9 @@
 fix every time that changing to english marks speaksEnglish then changing back doens't mark back - 2 places (reducer line 108)
 make sure dates logic work
-mobile
 deal with cases that the info from facebook is not full
+.gitignore
+modals
+mobile friendly
 
 before deploying:
 -make sure router route is setup (should be fine)
@@ -9,5 +11,6 @@ before deploying:
 -change all server strings to server address
 -clear api keys from public folder and any other file
 -fix mails not received mail from sendgrid
+-set facebook app to production
 
 

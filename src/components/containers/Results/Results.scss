@@ -1,0 +1,21 @@
+@import "../../../style/_devices.scss";
+
+.ResultsCont {
+	background: rgb(15, 219, 212);
+	background: linear-gradient(128deg, rgba(15, 219, 212, 1) 0%, rgba(45, 47, 253, 1) 100%);
+	display: flex;
+	padding: 20px;
+	margin: 0px;
+	text-align: center;
+
+	@media #{$large} {
+		justify-content: space-between;
+		flex-direction: row;
+		flex-wrap: wrap;
+	}
+
+	@media #{$small} {
+		justify-content: center;
+		flex-direction: column;
+	}
+}

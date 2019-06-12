@@ -1,21 +1,23 @@
 .Modal {
-	background-color: #95eaf3;
 	position: absolute;
+	left: 0;
+	right: 0;
+	margin-left: auto;
+	margin-right: auto;
 	padding: 20px;
-	z-index: 200;
+	z-index: 300;
 	width: 70%;
 	height: auto;
+	overflow: hidden;
 	top: 30px;
-	left: 100px;
 	text-align: -webkit-center;
+	background-color: #95eaf3;
 	font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 	border-radius: 10px;
-	overflow: auto;
 }
 
 .xIcon {
 	position: absolute;
-	left: 5%;
-	top: 5%;
+	left: 6%;
 	cursor: pointer;
 }

@@ -1,0 +1,52 @@
+@import "../../../style/devices";
+
+.FilterCont {
+	text-align: left;
+	padding: 20px;
+	background-color: lightskyblue;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
+
+	@media #{$small} {
+		flex-direction: column;
+		justify-content: center;
+	}
+}
+
+.AgeFromIndicator {
+	width: 20px;
+	margin: 5px;
+
+	@media #{$small} {
+		width: 100%;
+	}
+}
+
+label {
+	display: block;
+}
+
+.input-cont {
+	width: 400px;
+	margin: 5px;
+
+	@media #{$small} {
+		width: 100%;
+
+		#mainLang {
+			width: 100% !important;
+		}
+	}
+}
+
+.gender-cont {
+	margin: 5px;
+
+	@media #{$small} {
+		select {
+			width: 100%;
+		}
+	}
+}

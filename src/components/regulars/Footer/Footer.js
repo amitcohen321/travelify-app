@@ -1,9 +1,9 @@
 import React from "react"
-import classes from "./Footer.module.css"
+import "./Footer.scss"
 
 const Footer = () => {
 	return (
-		<footer className={classes.Footer}>
+		<footer className='Footer'>
 			<div>
 				<span>
 					This app was created with 💗 by Amit Cohen

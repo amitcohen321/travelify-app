@@ -1,6 +1,7 @@
 import React from "react"
 import classes from "./ProfileScreen.module.css"
 // import withModal from "../../UI/withModal/withModal"
+import EngageButtons from "../../regulars/EngageButtons/EngageButtons"
 
 const ProfileScreen = props => {
 	return (
@@ -12,14 +13,13 @@ const ProfileScreen = props => {
 			<div>
 				<span> Age: {props.userObj.age}</span>
 				<span>, From {props.userObj.country} </span>
-				<span> {props.userObj.about} </span>
+				<br />
+				<br />
+				<p> {props.userObj.about} </p>
 			</div>
-			<p>{props.userObj.about}</p>
+			<br />
 			<div className={classes.ButtonsCont}>
-				<a href={props.userObj.fbProfileLink} target='_blank'>
-					FB Profile
-				</a>
-				<button type='button'>Message...</button>
+				<EngageButtons fbBtn={true} fbProfileLink={props.userObj.fbProfileLink} />
 			</div>
 		</div>
 	)

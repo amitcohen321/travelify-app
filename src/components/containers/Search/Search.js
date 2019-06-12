@@ -117,7 +117,7 @@ class Search extends Component {
 								recipient={this.state.showMessageScreen[0]}
 							/>
 						</WithModal>
-						<Backdrop show='true' clicked={this.closeProfileScreen} />
+						<Backdrop show='true' closeHandler={this.closeMessageScreen} />
 					</>
 				)}
 
@@ -126,7 +126,7 @@ class Search extends Component {
 						<WithModal closeHandler={this.closeProfileScreen}>
 							<ProfileScreen userObj={this.state.showProfileScreen[0]} />
 						</WithModal>
-						<Backdrop show='true' clicked={this.closeProfileScreen} />
+						<Backdrop show='true' closeHandler={this.closeProfileScreen} />
 					</>
 				)}
 				<Filter filters={this.state.filters} handleFilterChange={this.handleFilterChange} />

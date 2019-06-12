@@ -1,5 +1,5 @@
 import React from "react"
-import classes from "./Results.module.css"
+import "./Results.scss"
 import ResultThumbnail from "../../regulars/ResultThumbnail/ResultThumbnail"
 
 const Results = props => {
@@ -15,7 +15,7 @@ const Results = props => {
 	})
 
 	return (
-		<div className={classes.ResultsCont}>
+		<div className='ResultsCont'>
 			{props.resultsToShow.length > 0 ? (
 				resultsThumbnails
 			) : (

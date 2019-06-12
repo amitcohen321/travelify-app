@@ -1,7 +1,8 @@
 import React from "react"
-import "./ResultThumbnail.module.css"
+import "./ResultThumbnail.scss"
+import EngageButtons from "../EngageButtons/EngageButtons"
 
-const Result = props => {
+const ResultThumbnail = props => {
 	return (
 		// <div className={classes.ResultThumbnailCont}>
 		<div data-class='my-card' className='ui card my-card'>
@@ -16,22 +17,18 @@ const Result = props => {
 					<b>From:</b> {props.result.country}
 				</div>
 			</div>
-			<div data-class='my-extra-content' class='extra content'>
-				<a href={props.result.fbProfileLink} target='_blank'>
-					<i class='facebook icon blue large' />
-				</a>
-				<i
-					class='envelope icon blue large'
-					onClick={() => props.sendMessageClickHandler(props.result.id)}
-				/>
-				<i
-					class='info circle icon blue large'
-					onClick={() => props.moreInfoClickHandler(props.result.id)}
-				/>
-			</div>
+			<EngageButtons
+				fbBtn={true}
+				fbProfileLink={props.result.fbProfileLink}
+				msgBtn={true}
+				resultId={props.result.id}
+				sendMessageClickHandler={props.sendMessageClickHandler}
+				infoBtn={true}
+				moreInfoClickHandler={props.moreInfoClickHandler}
+			/>
 		</div>
 		// </div>
 	)
 }
 
-export default Result
+export default ResultThumbnail

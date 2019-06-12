@@ -1,3 +1,5 @@
+@import "../../../style/devices";
+
 .Footer {
 	left: 0;
 	bottom: 0;
@@ -9,4 +11,16 @@
 	background: linear-gradient(128deg, rgba(15, 219, 212, 1) 0%, rgba(45, 47, 253, 1) 100%);
 	min-height: 100px;
 	align-items: center;
+
+	@media #{$small} {
+		display: block;
+		text-align: center;
+
+		div {
+			display: block;
+			width: auto;
+			margin: 10px;
+			padding: 10px;
+		}
+	}
 }

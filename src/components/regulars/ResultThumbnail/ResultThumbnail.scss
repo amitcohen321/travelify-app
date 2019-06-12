@@ -1,0 +1,59 @@
+@import "../../../style/_devices.scss";
+
+div[data-class="my-card"] {
+	border: 0px;
+
+	@media #{$large} {
+		width: 18% !important;
+	}
+
+	@media #{$small} {
+		flex-direction: row !important;
+		width: 100% !important;
+		margin: 10px;
+
+		.image {
+			display: inline-block;
+			width: 30%;
+		}
+	}
+}
+
+div[data-class="my-content"] {
+	font-size: 1.2vw !important;
+
+	@media #{$small} {
+		display: inline;
+	}
+}
+
+div[data-class="my-description"] {
+	text-align: left;
+
+	@media #{$small} {
+		font-size: 4vw !important;
+
+		.header {
+			font-size: 4vw !important;
+		}
+	}
+}
+
+div[data-class="my-extra-content"] {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+
+	@media #{$small} {
+		flex-direction: column !important;
+		border-left: 1px solid grey !important;
+	}
+}
+
+div[data-class="my-extra-content"]:after {
+	content: none !important;
+}
+
+i {
+	cursor: pointer;
+}
