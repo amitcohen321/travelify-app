@@ -55,12 +55,14 @@ const Filter = props => {
 				)}
 			</div>
 
-			<div>
+			<div className='age-cont'>
 				<span htmlFor='age'>
 					<b>Age:</b>
 				</span>
 				<br />
-				<label htmlFor='ageFrom'>From</label>
+				<label htmlFor='ageFrom' class='filter-label'>
+					From
+				</label>
 				<input
 					type='range'
 					id='ageFrom'
@@ -71,7 +73,9 @@ const Filter = props => {
 				/>
 				<input className='AgeFromIndicator' type='text' value={props.filters.ageFrom} />
 				<br />
-				<label htmlFor='ageTo'>To</label>
+				<label htmlFor='ageTo' class='filter-label'>
+					To
+				</label>
 				<input
 					type='range'
 					id='ageTo'

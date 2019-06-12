@@ -1,13 +1,13 @@
 import React from "react"
-import classes from "./Destination.module.css"
+import "./Destination.scss"
 import LocationSearchInput from "../LocationSearchInput/LocationSearchInput"
 
 const Destination = props => {
 	return (
 		<>
-			<div className={classes.DestinationCont}>
+			<div className='DestinationCont'>
 				<i class='trash icon red large' onClick={() => props.removeHandler(props.id)} />
-				<div class='ui input focus'>
+				<div class='ui input focus my-date-input'>
 					<input
 						type='date'
 						name='startdate'
@@ -17,8 +17,8 @@ const Destination = props => {
 						}
 					/>
 				</div>
-				<span> - </span>
-				<div class='ui input focus'>
+
+				<div className='ui input focus my-date-input'>
 					<input
 						type='date'
 						name='enddate'
@@ -26,7 +26,7 @@ const Destination = props => {
 						onChange={event => props.destEditHandler(props.id, "endDate", event.target.value)}
 					/>
 				</div>
-				<span> > </span>
+
 				<LocationSearchInput
 					locationName={props.location.name}
 					id={props.id}

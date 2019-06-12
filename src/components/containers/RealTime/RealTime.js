@@ -3,8 +3,8 @@ import Results from "../Results/Results"
 import axios from "axios"
 import openSocket from "socket.io-client"
 import consts from "../../../consts"
-import classes from "./RealTime.module.css"
 import Loader from "../../UI/Loader/Loader"
+import "./RealTime.scss"
 
 // REDUX
 import {connect} from "react-redux"
@@ -82,7 +82,7 @@ class RealTime extends Component {
 				)}
 				{this.state.isGeolocationAvailable && this.state.isGeolocationEnabled ? (
 					<>
-						<div className={classes.RealTimeTop}>
+						<div className='RealTimeTop'>
 							<h1>Real Time buddies finder</h1>
 							<p> You are now discoverable until you leave this page </p>{" "}
 							<p>The people currenty in your location are presented here.</p>

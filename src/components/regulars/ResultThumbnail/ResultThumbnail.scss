@@ -24,6 +24,11 @@ div[data-class="my-content"] {
 
 	@media #{$small} {
 		display: inline;
+		border-right: 1px solid #b6b8de !important;
+
+		.header {
+			font-size: 5vw !important;
+		}
 	}
 }
 
@@ -32,10 +37,6 @@ div[data-class="my-description"] {
 
 	@media #{$small} {
 		font-size: 4vw !important;
-
-		.header {
-			font-size: 4vw !important;
-		}
 	}
 }
 
@@ -46,7 +47,6 @@ div[data-class="my-extra-content"] {
 
 	@media #{$small} {
 		flex-direction: column !important;
-		border-left: 1px solid grey !important;
 	}
 }
 

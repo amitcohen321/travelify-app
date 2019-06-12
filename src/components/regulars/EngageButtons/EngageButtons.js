@@ -2,7 +2,7 @@ import React from "react"
 
 const EngageButtons = props => {
 	return (
-		<div data-class='my-extra-content' class='extra content'>
+		<div data-class='my-extra-content' className='extra content'>
 			{props.fbBtn ? (
 				<a href={props.fbProfileLink} target='_blank'>
 					<i class='facebook icon blue large' />

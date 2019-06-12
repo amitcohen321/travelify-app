@@ -1,6 +1,6 @@
 import React, {Component} from "react"
 import PlacesAutocomplete, {geocodeByAddress, getLatLng} from "react-places-autocomplete"
-import "./LocationSearchInput.module.css"
+import "./LocationSearchInput.scss"
 
 class LocationSearchInput extends Component {
 	constructor(props) {
@@ -40,7 +40,7 @@ class LocationSearchInput extends Component {
 				onChange={this.handleChange}
 				onSelect={this.handleSelect}>
 				{({getInputProps, suggestions, getSuggestionItemProps, loading}) => (
-					<div class='ui input focus'>
+					<div class='ui input focus my-dest-input'>
 						<input
 							{...getInputProps({
 								placeholder: this.props.locationName,

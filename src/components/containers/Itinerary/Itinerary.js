@@ -1,4 +1,4 @@
-import classes from "./Itinerary.module.css"
+import "./Itinerary.scss"
 import Destination from "../../regulars/Destination/Destination"
 import React, {Component} from "react"
 import Button from "../../UI/Button/Button"
@@ -41,14 +41,14 @@ class Itinerary extends Component {
 
 		return (
 			<div>
-				<div className={classes.ItineraryCont}>
+				<div className='ItineraryCont'>
 					<h1>Define Itinerary</h1>
 					<p>
 						{" "}
 						Define you trip's itinerary and Travelify will help you find people that meet you
 						on the road
 					</p>
-					<div className={classes.DestinationsCont}>
+					<div className='DestinationsCont'>
 						{destinationsCollection.length > 0 ? (
 							destinationsCollection
 						) : (
@@ -59,7 +59,7 @@ class Itinerary extends Component {
 						<i class='plus circle icon' />
 					</Button>
 
-					<hr className={classes.HorizontalLong} />
+					<hr className='HorizontalLong' />
 
 					<Button type='apply' btnAction={this.updateUserToDatabase}>
 						Apply
@@ -79,7 +79,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => {
-	return {	
+	return {
 		onItineraryInit: () => {
 			dispatch(actionCreators.getDestinationsStart())
 		},

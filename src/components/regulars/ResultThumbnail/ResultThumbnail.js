@@ -4,7 +4,6 @@ import EngageButtons from "../EngageButtons/EngageButtons"
 
 const ResultThumbnail = props => {
 	return (
-		// <div className={classes.ResultThumbnailCont}>
 		<div data-class='my-card' className='ui card my-card'>
 			<div class='image'>
 				<img src={props.result.imageUrl} />
@@ -27,7 +26,6 @@ const ResultThumbnail = props => {
 				moreInfoClickHandler={props.moreInfoClickHandler}
 			/>
 		</div>
-		// </div>
 	)
 }
 

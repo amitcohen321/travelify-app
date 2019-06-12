@@ -1,0 +1,13 @@
+@import "../../../style/_devices.scss";
+
+.RealTimeTop {
+	background-color: lightskyblue;
+	padding: 20px;
+	font-size: 2vw;
+
+	@media #{$small} {
+		p {
+			font-size: 3vw;
+		}
+	}
+}

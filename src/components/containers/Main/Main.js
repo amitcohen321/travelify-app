@@ -7,6 +7,7 @@ import Itinerary from "../Itinerary/Itinerary"
 import RealTime from "../RealTime/RealTime"
 import Settings from "../Settings/Settings"
 import Login from "../Login/Login"
+import "./main.scss"
 
 // REDUX
 import {connect} from "react-redux"

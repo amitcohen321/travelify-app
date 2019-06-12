@@ -20,11 +20,12 @@
 	margin: 5px;
 
 	@media #{$small} {
-		width: 100%;
+		display: inline-block;
+		width: 5%;
 	}
 }
 
-label {
+.filter-label {
 	display: block;
 }
 
@@ -48,5 +49,12 @@ label {
 		select {
 			width: 100%;
 		}
+	}
+}
+
+input[type="range"] {
+	@media #{$small} {
+		display: inline-block;
+		width: 90%;
 	}
 }
