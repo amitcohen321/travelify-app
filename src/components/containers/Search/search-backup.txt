@@ -1,10 +1,14 @@
 import React, {Component} from "react"
 import Filter from "../../regulars/Filter/Filter"
 import Results from "../Results/Results"
+import Backdrop from "../../UI/Backdrop/Backdrop"
+import ProfileScreen from "../../regulars/ProfileScreen/ProfileScreen"
 import * as ServerLogic from "../../Utils/ServerLogic/ServerLogic"
 import "./Search.css"
 import * as _ from "lodash"
+import WithModal from "../../UI/WithModal/WithModal"
 import Loader from "../../UI/Loader/Loader"
+import MessageForm from "../../regulars/MessageForm/MessageForm"
 
 // REDUX
 import {connect} from "react-redux"
@@ -84,17 +88,57 @@ class Search extends Component {
 		this.setState({filteredResults: [...filteredResults], loading: false})
 	}
 
+	setProfileScreenToShow = userId => {
+		const userToShowHisScreen = this.state.resultsFromDB.filter(user => user.id === userId)
+		this.setState({showProfileScreen: userToShowHisScreen})
+	}
+
+	closeProfileScreen = () => {
+		this.setState({showProfileScreen: null})
+	}
+
+	setSendMesssageScreenToShow = userId => {
+		const userToSendMessageTo = this.state.resultsFromDB.filter(user => user.id === userId)
+		this.setState({showMessageScreen: userToSendMessageTo})
+	}
+
+	closeMessageScreen = () => {
+		this.setState({showMessageScreen: null})
+	}
+
 	render() {
 		return (
 			<>
+				{this.state.showMessageScreen === null ? null : (
+					<>
+						<WithModal closeHandler={this.closeMessageScreen}>
+							<MessageForm
+								sender={this.props.currentUser}
+								recipient={this.state.showMessageScreen[0]}
+							/>
+						</WithModal>
+						<Backdrop show='true' closeHandler={this.closeMessageScreen} />
+					</>
+				)}
+
+				{this.state.showProfileScreen === null ? null : (
+					<>
+						<WithModal closeHandler={this.closeProfileScreen}>
+							<ProfileScreen userObj={this.state.showProfileScreen[0]} />
+						</WithModal>
+						<Backdrop show='true' closeHandler={this.closeProfileScreen} />
+					</>
+				)}
 				<Filter filters={this.state.filters} handleFilterChange={this.handleFilterChange} />
 				<div>
 					{this.state.loading ? (
 						<Loader />
 					) : (
 						<Results
-							currentUser={this.props.currentUser}
+							resultsFromDB={this.state.resultsFromDB}
 							resultsToShow={this.state.filteredResults}
+							moreInfoClickHandler={this.setProfileScreenToShow}
+							sendMessageClickHandler={this.setSendMesssageScreenToShow}
 						/>
 					)}
 				</div>

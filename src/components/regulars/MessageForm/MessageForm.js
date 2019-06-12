@@ -22,7 +22,6 @@ class MessageForm extends Component {
 	}
 
 	sendEmail = event => {
-		console.log(this.props)
 		ServerLogic.sendEmail({
 			sender: this.props.sender.email,
 			senderName: this.props.sender.name.split(" ")[0],
@@ -40,7 +39,7 @@ class MessageForm extends Component {
 
 	render() {
 		return (
-			<div className='FromCont'>
+			<div className='FormCont'>
 				<p>
 					<b>From:</b> {this.props.sender.name}{" "}
 				</p>

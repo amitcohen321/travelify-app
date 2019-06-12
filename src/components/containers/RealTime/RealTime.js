@@ -93,9 +93,8 @@ class RealTime extends Component {
 							<Loader />
 						) : (
 							<Results
+								currentUser={this.props.currentUser}
 								resultsToShow={this.state.usersToShow}
-								// moreInfoClickHandler={this.setProfileScreenToShow}
-								// sendMessageClickHandler={this.setSendMesssageScreenToShow}
 							/>
 						)}
 					</>
