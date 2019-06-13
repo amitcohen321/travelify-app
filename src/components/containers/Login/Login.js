@@ -54,12 +54,13 @@ class Login extends Component {
 					/>
 				</div>
 				<span>
-					(There's no other way to login)
+					(There's no other way to login
 					<span role='img' aria-label='smile-emoji'>
 						🙂
 					</span>
+					)
 				</span>
-				<p>You will be asked forr approval before actually logging in</p>
+				<p>You will be asked for approval before actually logging in</p>
 			</div>
 		)
 	}

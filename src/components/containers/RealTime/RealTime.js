@@ -10,6 +10,12 @@ import "./RealTime.scss"
 import {connect} from "react-redux"
 
 class RealTime extends Component {
+	// constructor(props) {
+	// 	super(props)
+
+	// 	this.componentCleanup = this.componentCleanup.bind(this)
+	// }
+
 	state = {
 		loading: true,
 		usersToShow: [],
@@ -19,11 +25,13 @@ class RealTime extends Component {
 	}
 
 	componentDidMount() {
-		const users = []
+		window.addEventListener("beforeunload", this.componentCleanup)
 
-		this.socket = openSocket("https://travelify-web.herokuapp.com")
+		const users = []
+		this.socket = openSocket(consts.REMOTE_API)
 		// this.socket = openSocket("http://localhost:4000")
 		this.socket.on("user_joined", connectedUsers => {
+			console.log(connectedUsers)
 			connectedUsers.forEach(user => {
 				if (user.location === this.state.userWithLocation.location) {
 					users.push(this.state.userWithLocation.user)
@@ -68,8 +76,13 @@ class RealTime extends Component {
 	}
 
 	componentWillUnmount() {
+		this.componentCleanup()
+		window.removeEventListener("beforeunload", this.componentCleanup)
+	}
+
+	componentCleanup = () => {
 		// notify all users that im leaving through the server
-		axios.post(consts.REMOTE_API + "/user-left", this.state.userWithLocation)
+		axios.post(consts.REMOTE_API + "/realtime/user-left", this.state.userWithLocation)
 		this.socket.close()
 	}
 
@@ -85,7 +98,7 @@ class RealTime extends Component {
 				{this.state.isGeolocationAvailable && this.state.isGeolocationEnabled ? (
 					<>
 						<div className='RealTimeTop'>
-							<h1>Real Time buddies finder</h1>
+							<h1>Real-Time buddies finder</h1>
 							<p> You are now discoverable until you leave this page </p>{" "}
 							<p>The people currenty in your location are presented here.</p>
 							<p> Don't hesitate to check them out and message them if you feel like!</p>

@@ -2,6 +2,9 @@ fix every time that changing to english marks speaksEnglish then changing back d
 make sure dates logic work
 deal with cases that the info from facebook is not full
 
+fix real time bug
+test if main feature works
+
 before deploying:
 -make sure router route is setup (should be fine)
 -change node port to not be 4000
