@@ -12,7 +12,7 @@ const ProfileScreen = props => {
 			</div>
 			<div>
 				<span> Age: {props.userObj.age}</span>
-				<span>, From {props.userObj.country} </span>
+				<span>, From {props.userObj.residence} </span>
 				<br />
 				<br />
 				<p> {props.userObj.about} </p>

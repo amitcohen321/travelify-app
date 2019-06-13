@@ -8,6 +8,10 @@
 	margin: 0px;
 	text-align: center;
 
+	div {
+		margin: auto;
+	}
+
 	@media #{$large} {
 		justify-content: space-between;
 		flex-direction: row;

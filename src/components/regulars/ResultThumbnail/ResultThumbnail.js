@@ -13,7 +13,7 @@ const ResultThumbnail = props => {
 				<div class='description' data-class='my-description'>
 					<b>Age:</b> {props.result.age}
 					<br />
-					<b>From:</b> {props.result.country}
+					<b>From:</b> {props.result.residence}
 				</div>
 			</div>
 			<EngageButtons

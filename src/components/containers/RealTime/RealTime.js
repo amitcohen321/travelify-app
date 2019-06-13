@@ -29,9 +29,7 @@ class RealTime extends Component {
 
 		const users = []
 		this.socket = openSocket(consts.REMOTE_API)
-		// this.socket = openSocket("http://localhost:4000")
 		this.socket.on("user_joined", connectedUsers => {
-			console.log(connectedUsers)
 			connectedUsers.forEach(user => {
 				if (user.location === this.state.userWithLocation.location) {
 					users.push(this.state.userWithLocation.user)
@@ -100,7 +98,7 @@ class RealTime extends Component {
 						<div className='RealTimeTop'>
 							<h1>Real-Time buddies finder</h1>
 							<p> You are now discoverable until you leave this page </p>{" "}
-							<p>The people currenty in your location are presented here.</p>
+							<p>The people currenty in your location are presented here</p>
 							<p> Don't hesitate to check them out and message them if you feel like!</p>
 						</div>
 

@@ -20,7 +20,10 @@ const Filter = props => {
 
 			<div className='input-cont'>
 				<label>Main Language</label>
-				<select id='mainLang' value={props.filters.mainLang} className='ui dropdown'>
+				<select
+					id='mainLang'
+					value={props.filters.mainLang}
+					className='ui dropdown'
 					onChange={event => props.handleFilterChange("mainLang", event.target.value)}>
 					<option value='any'>Any</option>
 					<option value='english'>English</option>

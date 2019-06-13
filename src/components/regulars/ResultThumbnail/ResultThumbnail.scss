@@ -5,6 +5,10 @@ div[data-class="my-card"] {
 
 	@media #{$large} {
 		width: 18% !important;
+
+		.image {
+			margin: 0;
+		}
 	}
 
 	@media #{$small} {

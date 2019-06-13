@@ -119,6 +119,7 @@ const reducer = (state = initialState, action) => {
 			}
 
 		case actionTypes.POPULATE_STORE:
+			console.log(action.loginData)
 			const editedUserInfo = {...state.userInfo}
 			const editedLoginInfo = {...state.loginInfo}
 			const editedLanguage = {...state.userInfo.language}
@@ -128,7 +129,7 @@ const reducer = (state = initialState, action) => {
 			editedUserInfo["name"] = action.loginData.name
 			editedUserInfo["email"] = action.loginData.email
 			editedUserInfo["gender"] = action.loginData.gender
-			editedUserInfo["fbProfileLink"] = action.loginData.fbProfileLink
+			editedUserInfo["fbProfileLink"] = action.loginData.link
 			editedUserInfo["about"] = action.loginData.about
 
 			if (!action.loginData.picture) {
@@ -155,7 +156,6 @@ const reducer = (state = initialState, action) => {
 			}
 
 			editedLoginInfo["isLoggedIn"] = true
-
 			editedUserInfo["language"] = {...editedLanguage}
 
 			return {

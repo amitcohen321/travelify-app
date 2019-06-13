@@ -31,7 +31,6 @@ class MessageForm extends Component {
 			fbProfileLink: this.props.sender.fbProfileLink
 		})
 			.then(res => {
-				console.log(res)
 				this.setState({messageSent: true})
 			})
 			.catch(err => console.log(err))

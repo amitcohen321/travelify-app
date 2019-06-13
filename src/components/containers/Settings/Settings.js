@@ -19,15 +19,14 @@ class Settings extends Component {
 	updateUserToDatabase = () => {
 		ServerLogic.updateUserSettingsOnDb(store.getState())
 			.then(res => {
-				console.log(res)
 				this.setState({fillErrors: [], isUserUpdated: true})
 			})
 			.catch(err => {
 				const fillErrorsArr = []
-				console.log(err.response.data.error)
-				console.log(err.response)
-				console.log(err.response.data.errors[0].param)
-				console.log(err.response.data.errors[0].msg)
+				// console.log(err.response.data.error)
+				// console.log(err.response)
+				// console.log(err.response.data.errors[0].param)
+				// console.log(err.response.data.errors[0].msg)
 				err.response.data.errors.forEach(errorElement => {
 					fillErrorsArr.push({
 						field: errorElement.param,
