@@ -21,7 +21,8 @@ class RealTime extends Component {
 	componentDidMount() {
 		const users = []
 
-		this.socket = openSocket("http://localhost:4000")
+		this.socket = openSocket("https://travelify-web.herokuapp.com")
+		// this.socket = openSocket("http://localhost:4000")
 		this.socket.on("user_joined", connectedUsers => {
 			connectedUsers.forEach(user => {
 				if (user.location === this.state.userWithLocation.location) {
@@ -57,7 +58,8 @@ class RealTime extends Component {
 						location: placeName
 					}
 					this.setState({userWithLocation: {...userWithLocation}})
-					axios.post("http://localhost:4000/realtime/user-joined", userWithLocation)
+					axios.post(consts.REMOTE_API + "/realtime/user-joined", userWithLocation)
+					// axios.post("http://localhost:4000/realtime/user-joined", userWithLocation)
 				})
 				.catch(err => {
 					console.log(err)
@@ -67,7 +69,7 @@ class RealTime extends Component {
 
 	componentWillUnmount() {
 		// notify all users that im leaving through the server
-		axios.post("http://localhost:4000/realtime/user-left", this.state.userWithLocation)
+		axios.post(consts.REMOTE_API + "/user-left", this.state.userWithLocation)
 		this.socket.close()
 	}
 
