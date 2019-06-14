@@ -27,9 +27,9 @@ class RealTime extends Component {
 			connectedUsers.forEach(user => {
 				if (user.location === this.state.userWithLocation.location) {
 					users.push(this.state.userWithLocation.user)
-					this.setState({loading: false, usersToShow: [...users]})
 				}
 			})
+			this.setState({loading: false, usersToShow: [...users]})
 		})
 
 		this.socket.on("user_left", connectedUsers => {
@@ -59,7 +59,6 @@ class RealTime extends Component {
 					}
 					this.setState({userWithLocation: {...userWithLocation}})
 					axios.post(consts.REMOTE_API + "/realtime/user-joined", userWithLocation)
-					// axios.post("http://localhost:4000/realtime/user-joined", userWithLocation)
 				})
 				.catch(err => {
 					console.log(err)
@@ -69,12 +68,12 @@ class RealTime extends Component {
 
 	componentWillUnmount() {
 		this.componentCleanup()
-		window.removeEventListener("beforeunload", this.componentCleanup)
 	}
 
 	componentCleanup = () => {
 		// notify all users that im leaving through the server
 		axios.post(consts.REMOTE_API + "/realtime/user-left", this.state.userWithLocation)
+		window.removeEventListener("beforeunload", this.componentCleanup)
 		this.socket.close()
 	}
 

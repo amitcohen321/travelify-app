@@ -40,7 +40,7 @@ class LocationSearchInput extends Component {
 				onChange={this.handleChange}
 				onSelect={this.handleSelect}>
 				{({getInputProps, suggestions, getSuggestionItemProps, loading}) => (
-					<div class='ui input focus my-dest-input'>
+					<div className='ui input focus my-dest-input'>
 						<input
 							{...getInputProps({
 								placeholder: this.props.locationName,

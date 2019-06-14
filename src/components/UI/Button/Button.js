@@ -6,12 +6,15 @@ const Button = props => {
 
 	if (props.type === "apply") {
 		btn = (
-			<button class='ui inverted violet button' data-class='my-btn' onClick={props.btnAction}>
+			<button
+				className='ui inverted violet button'
+				data-class='my-btn'
+				onClick={props.btnAction}>
 				{props.children}
 			</button>
 		)
 	} else if (props.type === "add") {
-		btn = <i class='plus circle icon big violet' data-class='my-btn' onClick={props.btnAction} />
+		btn = <i className='plus circle icon big violet' data-class='my-btn' onClick={props.btnAction} />
 	}
 
 	return <div>{btn}</div>

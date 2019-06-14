@@ -6,8 +6,8 @@ const Destination = props => {
 	return (
 		<>
 			<div className='DestinationCont'>
-				<i class='trash icon red large' onClick={() => props.removeHandler(props.id)} />
-				<div class='ui input focus my-date-input'>
+				<i className='trash icon red large' onClick={() => props.removeHandler(props.id)} />
+				<div className='ui input focus my-date-input'>
 					<input
 						type='date'
 						name='startdate'

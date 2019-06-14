@@ -56,7 +56,7 @@ class Itinerary extends Component {
 						)}
 					</div>
 					<Button type='add' btnAction={this.props.destinationAdded}>
-						<i class='plus circle icon' />
+						<i className='plus circle icon' />
 					</Button>
 
 					<hr className='HorizontalLong' />

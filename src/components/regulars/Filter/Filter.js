@@ -4,7 +4,7 @@ import "./Filter.scss"
 const Filter = props => {
 	return (
 		<div className='FilterCont'>
-			<div class='gender-cont'>
+			<div className='gender-cont'>
 				<label for='gender'> Gender </label>
 				<select
 					value={props.filters.gender ? props.filters.gender : "Select Gender..."}
@@ -63,7 +63,7 @@ const Filter = props => {
 					<b>Age:</b>
 				</span>
 				<br />
-				<label htmlFor='ageFrom' class='filter-label'>
+				<label htmlFor='ageFrom' className='filter-label'>
 					From
 				</label>
 				<input
@@ -76,7 +76,7 @@ const Filter = props => {
 				/>
 				<input className='AgeFromIndicator' type='text' value={props.filters.ageFrom} />
 				<br />
-				<label htmlFor='ageTo' class='filter-label'>
+				<label htmlFor='ageTo' className='filter-label'>
 					To
 				</label>
 				<input

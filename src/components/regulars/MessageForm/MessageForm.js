@@ -64,7 +64,7 @@ class MessageForm extends Component {
 						data-class='my-send-btn'
 						class='ui primary button my-send-btn'
 						onClick={this.sendEmail}>
-						Send <i class='arrow alternate circle right icon ' />
+						Send <i className='arrow alternate circle right icon ' />
 					</button>
 
 					{this.state.messageSent ? <span>Message Sent!</span> : null}
