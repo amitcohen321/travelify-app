@@ -129,7 +129,9 @@ const reducer = (state = initialState, action) => {
 			editedUserInfo["name"] = action.loginData.name
 			editedUserInfo["email"] = action.loginData.email
 			editedUserInfo["gender"] = action.loginData.gender
-			editedUserInfo["fbProfileLink"] = action.loginData.link
+			!action.loginData.fbProfileLink
+				? (editedUserInfo["fbProfileLink"] = action.loginData.link)
+				: (editedUserInfo["fbProfileLink"] = action.loginData.fbProfileLink)
 			editedUserInfo["about"] = action.loginData.about
 
 			if (!action.loginData.picture) {

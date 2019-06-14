@@ -10,12 +10,6 @@ import "./RealTime.scss"
 import {connect} from "react-redux"
 
 class RealTime extends Component {
-	// constructor(props) {
-	// 	super(props)
-
-	// 	this.componentCleanup = this.componentCleanup.bind(this)
-	// }
-
 	state = {
 		loading: true,
 		usersToShow: [],

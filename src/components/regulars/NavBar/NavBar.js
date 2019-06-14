@@ -6,9 +6,6 @@ export default class NavBar extends Component {
 	state = {activeItem: "abcd"}
 
 	handleItemClick = (e, {name}) => this.setState({activeItem: name})
-
-	// const {activeItem} = this.state
-
 	handleItemClick = (e, {name}) => this.setState({activeItem: name})
 
 	render() {

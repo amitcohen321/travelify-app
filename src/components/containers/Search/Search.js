@@ -31,7 +31,6 @@ class Search extends Component {
 		const resultsFromDB = []
 		ServerLogic.searchBuddies(store.getState().userInfo.id)
 			.then(response => {
-				console.log(response)
 				response.data.forEach(user => {
 					resultsFromDB.push({
 						id: user._id,
