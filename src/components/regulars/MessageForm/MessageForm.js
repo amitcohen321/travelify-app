@@ -22,6 +22,7 @@ class MessageForm extends Component {
 	}
 
 	sendEmail = event => {
+		event.preventDefault()
 		ServerLogic.sendEmail({
 			sender: this.props.sender.email,
 			senderName: this.props.sender.name.split(" ")[0],

@@ -18,7 +18,9 @@ class Login extends Component {
 			.then(res => {
 				if (res.data.length === 0) {
 					console.log("user doesnt exist")
+					console.log(FBresponse)
 					this.props.populateStore(FBresponse)
+					console.log(store.getState())
 					ServerLogic.createUser(store.getState())
 						.then(newUserId => {
 							this.props.addUserId(newUserId.data)

@@ -8,15 +8,14 @@ textarea {
 	border-radius: 5px;
 	border: 1px solid #ccc;
 	box-shadow: 1px 1px 1px #999;
+	width: 100%;
 
 	@media #{$small} {
-		width: 100%;
 	}
 }
 
 .FormCont {
 	text-align: left;
-	width: fit-content;
 	position: relative;
 	top: 30px;
 }
