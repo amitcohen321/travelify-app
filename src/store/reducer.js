@@ -152,7 +152,7 @@ const reducer = (state = initialState, action) => {
 				const age = utils.getAge(action.loginData.birthday)
 				editedUserInfo["age"] = age
 				editedUserInfo["imageUrl"] = action.loginData.picture.data.url
-				editedUserInfo["residence"] = action.loginData.location.name
+				editedUserInfo["residence"] = action.loginData.location ? action.loginData.location.name : null 
 				editedLoginInfo["token"] = action.loginData.accessToken
 				editedLoginInfo["fbUserId"] = action.loginData.userID
 			}
